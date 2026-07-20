@@ -8,15 +8,23 @@
 
 
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="html2canvas-pro.min.js" type="module"></script>
+
 
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quantico:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+        rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
 
     <style type="text/tailwindcss">
         @theme {
+            --font-quantico: "Quantico", sans-serif;
+
             --color-dc-pink: #ce2e73;
             --color-dc-pink-50: #ffe5f3;
             --color-dc-pink-100: #ffd8e6;
@@ -90,16 +98,21 @@
 
 <body class="bg-dc-dark-navy">
     <div class="wrapper max-w-[820px] mx-auto border-[6px] border-dc-pink bg-white p-8">
-        <h1 class="">Welcome to the Dashcon 2 Virtual Ballpit!</h1>
-        <p>You asked, and we delivered!</p>
+        <div class="text-center mb-8">
+            <h1 class="font-quantico text-3xl font-bold mb-2">Welcome to the Dashcon 2 Virtual Ballpit!</h1>
+            <p class="font-quantico text-2xl italic">You asked, and we delivered!</p>
+        </div>
+        
         <p></p>
 
         <div>
-            <h3>Technical Notes</h3>
-            <p>This was created using Vanilla Javascript, Tailwind CSS, and <a
-                    href="https://html2canvas.hertzen.com/">HTML2Canvas</a>.</p>
+            <h3 class="font-quantico text-2xl font-bold mb-2">Technical Notes</h3>
+            <p class="my-4 text-lg">This was created using Vanilla JavaSript, <a href="https://tailwindcss.com/">Tailwind CSS</a>, <a href="https://daisyui.com/">DaisyUI</a> and <a
+                    href="https://yorickshan.github.io/html2canvas-pro/">HTML2Canvas Pro</a> by <a
+                    href="https://github.com/yorickshan">Shan Yinlong</a> (the extended forked version of <a
+                    href="https://html2canvas.hertzen.com/">HTML2Canvas</a>, by <a href="https://hertzen.com/">Niklas von Hertzen</a>).</p>
 
-            <p>Absolutely no AI was used to create this, just </p>
+            <p class="my-4 text-xl">Absolutely no AI was used to create this! This ballpit was lovingly crafted by Taro, a member of the Dashcon 2 team :)</p>
         </div>
 
 
@@ -108,8 +121,7 @@
     <div class="wrapper max-w-[820px] mx-auto border-[6px] border-dc-pink">
 
         <div id="display" class="aspect-8/5 m-auto">
-            <div id="canvas" class="absolute aspect-8/5 w-full max-w-[808px] h-auto bg-white"
-                style="clip-path: content-box polygon(0% 0%, 0% 100%, 100% 100%, 100% 0%);">
+            <div id="canvas" class="absolute aspect-8/5 w-full max-w-[808px] h-auto bg-white">
 
                 <div class="absolute bottom-[0] translate-y-[1px] w-full z-[10]">
                     <svg class="" width="100%" height="auto" viewBox="0 0 820 151" fill="none"
@@ -462,7 +474,7 @@
                     </svg>
                 </div>
 
-                <img id="user-pic" class="absolute h-[90%] left-[0] right-[0] mx-auto bottom-[0]">
+                <img id="userPic" class="absolute h-[90%] left-[0] right-[0] mx-auto bottom-[0]">
 
                 <div class="absolute bottom-[0] translate-y-[1px] w-full z-[-10]">
                     <svg width="100%" height="auto" viewBox="0 0 820 196" fill="none"
@@ -817,7 +829,7 @@
 
                     <label for="uploadImg" class="">Choose a picture:</label>
 
-                    <input class="file-input file-input-primary" type="file" id="uploadImg" name="uploadImg"
+                    <input class="file-input file-input-dc-pink" type="file" id="uploadImg" name="uploadImg"
                         accept="image/png, image/jpeg" onchange="loadFile(event)" />
 
                     <div class="slideContainer">
@@ -894,30 +906,30 @@
             </div>
             <div class="join">
 
-            <button id="reset" class="btn join-item" onclick="reset()">Reset Position</button>
+                <button id="reset" class="btn join-item" onclick="reset()">Reset Position</button>
 
-            <button id="openDownload" class="btn join-item" disabled>Complete Postcard</button>
+                <button id="openDownload" class="btn join-item" disabled>Complete Postcard</button>
 
             </div>
 
 
-        <div id="modal" role="dialog" aria-modal="true">
-            <div class="modalContent">
+            <div id="modal" role="dialog" aria-modal="true" class="z-[20]">
+                <div class="modalContent">
 
-                <img id="downloadImg" src="" alt="">
+                    <img id="downloadImg" src="" alt="">
 
 
-                <div class="modalButtons">
-                    <button onclick="closeModal()">Go Back</button>
-                    <a href="" id="downloadLink" download>Download</a>
+                    <div class="modalButtons">
+                        <button onclick="closeModal()">Go Back</button>
+                        <a href="" id="downloadLink" download>Download</a>
+                    </div>
+
                 </div>
 
             </div>
 
+            <script src="script.js"></script>
         </div>
-
-        <script src="script.js"></script>
-    </div>
 </body>
 
 </html>
