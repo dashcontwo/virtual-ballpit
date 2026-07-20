@@ -3,6 +3,10 @@
     margin: 80px auto;
 }
 
+#canvas {
+    clip-path: polygon(0% 0%, 0% 100%, 100% 100%, 100% 0%);
+}
+
 .description,
 .controls {
     background-color: white;
