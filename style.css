@@ -1,0 +1,186 @@
+.wrapper {
+    max-width: 820px;
+    margin: 80px auto;
+}
+
+.description,
+.controls {
+    background-color: white;
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+/* Move Buttons */
+div.moveButtons {
+    display: grid;
+    max-width: 100px;
+    grid-template-areas:
+        '. up .'
+        'left . right'
+        '. down .';
+}
+
+.moveButtons>#up {
+    grid-area: up;
+}
+
+.moveButtons>#left {
+    grid-area: left;
+}
+
+.moveButtons>#right {
+    grid-area: right;
+}
+
+.moveButtons>#down {
+    grid-area: down;
+}
+
+
+/* CARD INPUTS */
+.backgroundType, .backgroundTypeImg {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+}
+
+.backgroundTypeImg {
+    margin-top: 20px;
+}
+
+.backgroundType label, .backgroundTypeImg label {
+    position:relative;
+    display:block;
+    border: 1px solid black;
+    border-radius: 0.5em;
+    padding: 1em;
+    cursor: pointer;
+    transition: all 250ms ease-in-out;
+    height: 100px;
+    box-sizing: border-box;
+}
+
+.backgroundType input, .backgroundTypeImg input  {
+    float:right;
+
+}
+
+.backgroundType label h4, .backgroundTypeImg label h4 {
+    font-family:Arial, Helvetica, sans-serif;
+    margin:0px;
+}
+
+label h4 {
+    text-shadow:
+   -1px -1px 0 #fff,  
+    1px -1px 0 #fff,
+    -1px 1px 0 #fff,
+     1px 1px 0 #fff;
+
+}
+
+label:hover {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+label:has(input[type="radio"]:checked) {
+    border: 5px solid black;
+
+}
+
+label[for="imageBackground"] {
+    background: url("../images/placeholder-300x200.png") center center;
+}
+
+label[for="gradientBackground"] {
+    background: linear-gradient(to bottom, blue, yellow);
+}
+
+label[for="colorBackground"] {
+    background: pink;
+}
+
+
+/* Hides by default - will add the show class when */
+.backgroundTypeImg, .backgroundTypeGradient, .backgroundTypeColor {
+    /* opacity: 0;
+    visibility: hidden; */
+    display:none;
+}
+
+
+/* Background Image Options Styling */
+
+
+
+
+/* MODAL */
+#modal {
+    /* Sets the modal position as fixed, starting in the top left corner. */
+    position: fixed;
+    left: 0;
+    top: 0;
+
+    /* Sizes the modal over the full screen */
+    width: 100%;
+    height: 100%;
+
+    /* Sets the modal as a grid, and centers the content on both axis */
+    display: grid;
+
+    /* Sets up the grid by rows, with the image taking 90%, and the caption only 10% */
+    grid-template-rows: 90% 10%;
+
+    /* A background colour of black at 75% opacity */
+    background-color: rgba(0, 0, 0, 0.75);
+
+    /* Not visible by default */
+    /* opacity: 0;
+    visibility: hidden; */
+    display:none;
+
+    /* A transition between the main screen and the modal */
+    transition: 0.5s;
+}
+
+
+#modal>div.modalContent {
+    margin: auto;
+}
+
+
+
+/* Aligns the content of the HD image, and sets it to have a maximum height of 95% of its container (to leave a little cushion for spacing) */
+#modal img {
+    width: 75%;
+    height: auto;
+}
+
+body.modal-open {
+    overflow: hidden;
+}
+
+/* This is toggled on and off to show hidden elements */
+#modal.show, div.show {
+    opacity: 1;
+    visibility: visible; 
+    display:grid;
+}
+
+@media (min-width: 400px) {
+    .backgroundType, .backgroundTypeImg {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (min-width: 650px) {
+    .backgroundType, .backgroundTypeImg {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+@media (min-width: 820px) {
+    .backgroundType, .backgroundTypeImg {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
