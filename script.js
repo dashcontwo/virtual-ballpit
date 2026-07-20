@@ -1,9 +1,12 @@
-const $userImg = document.getElementById("user-pic");
+// import html2canvas from 'html2canvas-pro';
+
+const $userImg = document.getElementById("userPic");
 const $scaleRange = document.getElementById("imgScale");
 const $resetBtn = document.getElementById("reset");
 const $display = document.getElementById("display");
 const $canvas = document.getElementById("canvas");
-
+const $modalCapBtn = document.getElementById("openDownload");
+const $modal = document.getElementById("modal");
 
 // CUSTOM BALL COLOUR VARIABLES
 
@@ -35,26 +38,52 @@ const $bgColSection = document.querySelector(".backgroundTypeColor");
 
 
 
-// MODAL VARIABLES
-const $modalCapBtn = document.getElementById("openDownload");
-const $modal = document.getElementById("modal");
-
-
-// 
+// URL for the modal image / result
 let imgURL;
 
 // Transform of $userImg, X and Y
 let imgX = 0;
 let imgY = 0;
 
+// FUNCTIONS ON LOAD
+setBallColor();
+
+// EVENT LISTENERS
+$color1Input.addEventListener("change", setBallColor);
+$color2Input.addEventListener("change", setBallColor);
+$color3Input.addEventListener("change", setBallColor);
+$color4Input.addEventListener("change", setBallColor);
 
 
+$backgroundTypeSection.addEventListener("change", (event) => {
+    if (event.target.id == "imageBackground") {
+        closeTypeMenus();
+        $bgImgSection.classList.add("show");
+        // Set initial image background? Or wait until option picked?
+    } else if (event.target.id == "gradientBackground") {
+        closeTypeMenus();
+        $bgGradSection.classList.add("show");
+    } else if (event.target.id == "colorBackground") {
+        closeTypeMenus();
+        $bgColSection.classList.add("show");
+    }
+})
 
+// IMAGE CONTROL FUNCTIONS
 const loadFile = function (event) {
     $userImg.src = URL.createObjectURL(event.target.files[0]);
     reset();
     $modalCapBtn.disabled = false;
 };
+
+// Resets the transforms of the images by removing the transform and scale styles, and resetting the slider and X and Y values for translation.
+function reset() {
+    $userImg.style.transform = "";
+    $userImg.style.scale = "";
+    $scaleRange.value = 100;
+    imgX = 0;
+    imgY = 0;
+}
 
 const up = function () {
     imgY -= 5;
@@ -80,50 +109,11 @@ const scaleImg = function () {
     $userImg.style.scale = $scaleRange.value / 100;
 }
 
-
-// ON LOAD ACTIONS:
-// changeCanvasHeight();
-setBallColor();
-
-
-
-$modalCapBtn.addEventListener("click", async () => {
-    let canvas = await html2canvas($canvas);
-
-    canvas.toBlob((blob) => {
-        imgURL = URL.createObjectURL(blob);
-        document.getElementById("downloadLink").href = imgURL;
-        document.getElementById("downloadImg").src = imgURL;
-    })
-
-    openModal();
-})
-
-$backgroundTypeSection.addEventListener("change", (event) => {
-    if (event.target.id == "imageBackground") {
-        closeTypeMenus();
-        $bgImgSection.classList.add("show");
-        // Set initial image background? Or wait until option picked?
-    } else if (event.target.id == "gradientBackground") {
-        closeTypeMenus();
-        $bgGradSection.classList.add("show");
-    } else if (event.target.id == "colorBackground") {
-        closeTypeMenus();
-        $bgColSection.classList.add("show");
-    }
-})
-
 function closeTypeMenus() {
     $bgImgSection.classList.remove("show");
     $bgGradSection.classList.remove("show");
     $bgColSection.classList.remove("show");
 }
-
-$color1Input.addEventListener("change", setBallColor);
-$color2Input.addEventListener("change", setBallColor);
-$color3Input.addEventListener("change", setBallColor);
-$color4Input.addEventListener("change", setBallColor);
-
 
 function setBackground(background) {
     $canvas.style.background = background;
@@ -148,20 +138,22 @@ function setBallColor() {
     });
 }
 
-// Resets the transforms of the images by removing the transform and scale styles, and resetting the slider and X and Y values for translation.
-function reset() {
-    $userImg.style.transform = "";
-    $userImg.style.scale = "";
-    $scaleRange.value = 100;
-    imgX = 0;
-    imgY = 0;
-}
+// // html2canvas(document.body).then(function(canvas) {
+//     document.body.appendChild(canvas);
+// });
 
+$modalCapBtn.addEventListener("click", async () => {
+    console.log('Work')
+    let canvas = await html2canvas($canvas);
 
-// Adjusts the canvas height for setup and resize, to keep the 5/8 ratio of the display.
-// function changeCanvasHeight() {
-//     $display.style.height = ($display.offsetWidth * 5/8) + "px";  
-// }
+    canvas.toBlob((blob) => {
+        imgURL = URL.createObjectURL(blob);
+        document.getElementById("downloadLink").href = imgURL;
+        document.getElementById("downloadImg").src = imgURL;
+    })
+
+    openModal();
+})
 
 // Modal open and close
 function openModal() {
@@ -177,7 +169,3 @@ function closeModal() {
     // Revokes object URL to prevent memory leakage
     URL.revokeObjectURL(imgURL);
 }
-
-
-
-
