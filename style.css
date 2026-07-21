@@ -32,7 +32,6 @@
     border: none;
 }
 
-/* #202c43 */
 
 /* Move Buttons */
 div.moveButtons {
@@ -94,22 +93,13 @@ div.moveButtons {
     margin:0px;
 }
 
-label h4 {
-    text-shadow:
-   -1px -1px 0 #fff,  
-    1px -1px 0 #fff,
-    -1px 1px 0 #fff,
-     1px 1px 0 #fff;
-
-}
-
 label:has(input[type="radio"]:checked) {
     border: 5px solid black;
 
 }
 
 label[for="imageBackground"] {
-    background: url("../images/placeholder-300x200.png") center center;
+    background: url("/images/og-dashcon-ballpit.jpg") center center;
 }
 
 label[for="gradientBackground"] {
