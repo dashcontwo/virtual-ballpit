@@ -26,6 +26,12 @@ const $allColor4 = document.querySelectorAll(".ball-color-4")
 const $ballpitFill = document.querySelectorAll(".ballpit-fill");
 const $ballpitStroke = document.querySelectorAll(".ballpit-stroke");
 
+// Original colour values
+const ballpitColor = '#1F4686';
+const ballColor1 = '#2B8CD8';
+const ballColor2 = '#B672DB';
+const ballColor3 = '#EFD8CB';
+const ballColor4 = '#F6D64F';
 
 
 // BACKGROUND VARIABLES
@@ -79,12 +85,12 @@ const loadFile = function (event) {
     $userImg.src = userImgUrl;
     $previewImg.src = userImgUrl; 
     $previewImg.hidden = false;
-    reset();
+    resetImg();
     $modalCapBtn.disabled = false;
 };
 
 // Resets the transforms of the images by removing the transform and scale styles, and resetting the slider and X and Y values for translation.
-function reset() {
+function resetImg() {
     $userImg.style.transform = "";
     $userImg.style.scale = "";
     $scaleRange.value = 100;
@@ -124,6 +130,16 @@ function closeTypeMenus() {
 
 function setBackground(background) {
     $canvas.style.background = background;
+}
+
+function resetColor() {
+    $color1Input.value = ballColor1;
+    $color2Input.value = ballColor2;
+    $color3Input.value = ballColor3;
+    $color4Input.value = ballColor4;
+    $ballpitColor.value = ballpitColor;
+
+    setBallColor();
 }
 
 function setBallColor() {
