@@ -25,6 +25,8 @@
         @theme {
             --font-quantico: "Quantico", sans-serif;
 
+            --background-gradient: linear-gradient(127deg,rgba(15, 22, 34, 1) 0%, rgba(32, 44, 67, 1) 50%, rgba(15, 22, 34, 1) 100%);
+
             --color-dc-pink: #ce2e73;
             --color-dc-pink-50: #ffe5f3;
             --color-dc-pink-100: #ffd8e6;
@@ -97,34 +99,13 @@
 </head>
 
 <body class="bg-dc-dark-navy">
-    <div class="wrapper max-w-[820px] mx-auto border-[6px] border-dc-pink bg-white p-8">
-        <div class="text-center mb-8">
-            <h1 class="font-quantico text-3xl font-bold mb-2">Welcome to the Dashcon 2 Virtual Ballpit!</h1>
-            <p class="font-quantico text-2xl italic">You asked, and we delivered!</p>
-        </div>
-        
-        <p></p>
-
-        <div>
-            <h3 class="font-quantico text-2xl font-bold mb-2">Technical Notes</h3>
-            <p class="my-4 text-lg">This was created using Vanilla JavaSript, <a href="https://tailwindcss.com/">Tailwind CSS</a>, <a href="https://daisyui.com/">DaisyUI</a> and <a
-                    href="https://yorickshan.github.io/html2canvas-pro/">HTML2Canvas Pro</a> by <a
-                    href="https://github.com/yorickshan">Shan Yinlong</a> (the extended forked version of <a
-                    href="https://html2canvas.hertzen.com/">HTML2Canvas</a>, by <a href="https://hertzen.com/">Niklas von Hertzen</a>).</p>
-
-            <p class="my-4 text-xl">Absolutely no AI was used to create this! This ballpit was lovingly crafted by Taro, a member of the Dashcon 2 team :)</p>
-        </div>
-
-
-    </div>
-
-    <div class="wrapper max-w-[820px] mx-auto border-[6px] border-dc-pink">
+    <div class="max-w-[820px] mx-auto py-8">
 
         <div id="display" class="aspect-8/5 m-auto">
-            <div id="canvas" class="absolute aspect-8/5 w-full max-w-[808px] h-auto bg-white">
+            <div id="canvas" class="absolute aspect-8/5 w-full max-w-[820px] h-auto bg-white">
 
                 <div class="absolute bottom-[0] translate-y-[1px] w-full z-[10]">
-                    <svg class="" width="100%" height="auto" viewBox="0 0 820 151" fill="none"
+                    <svg width="100%" height="auto" viewBox="0 0 820 151" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
                         <g id="BallpitFront" clip-path="url(#clip0_41_42)">
                             <g id="Balls">
@@ -146,10 +127,10 @@
                                 </g>
                                 <g class="ball">
                                     <path
-                                        d="M-30.5278 75.628C-45.7258 57.463 -48.5301 36.1462 -30.5278 21.0844C-12.5255 6.02261 19.4662 2.91936 34.6642 21.0844C49.8622 39.2495 46.4423 62.9403 28.44 78.0021C10.4377 93.0639 -15.3298 93.7931 -30.5278 75.628Z"
+                                        d="M-30.5278 75.628C-45.7258 57.463 -48.5301 36.1462 -30.5278 21.0844C-12.5255 6.02261 19.4662 2.91936 34.6642 21.0844C49.8622 39.2495 46.4423 62.9403 28.44 78.0021C10.4378 93.0639 -15.3298 93.7931 -30.5278 75.628Z"
                                         fill="#F6D64F" class="ball-color-4"></path>
                                     <path
-                                        d="M-30.528 75.6278C-15.33 93.7929 10.438 93.0637 28.4402 78.0019C46.4423 62.9401 49.8619 39.2492 34.664 21.0842L34.3049 20.6626C19.2087 3.24728 -11.6737 6.04564 -29.6737 20.3872L-30.5281 21.0842C-48.2491 35.9108 -45.8081 56.7984 -31.2306 74.7743L-30.528 75.6278ZM-36.6637 80.7613C-45.0157 70.7787 -50.537 59.2646 -50.9724 47.488C-51.4202 35.3723 -46.4306 23.9586 -35.6616 14.9485C-25.1919 6.18892 -10.9423 1.06887 2.86426 0.627965C16.6759 0.186933 31.1758 4.44816 40.7997 15.9507C59.1223 37.8504 54.6078 66.5391 33.5738 84.1376C13.0116 101.341 -17.9836 103.088 -36.6637 80.7613Z"
+                                        d="M-30.528 75.6278C-15.33 93.7929 10.438 93.0637 28.4402 78.0019C46.4423 62.9401 49.8619 39.2492 34.664 21.0842L34.3049 20.6626C19.2087 3.24728 -11.6737 6.04564 -29.6737 20.3872L-30.5281 21.0842C-48.2491 35.9108 -45.8081 56.7984 -31.2306 74.7743L-30.528 75.6278ZM-36.6637 80.7613C-45.0157 70.7787 -50.537 59.2646 -50.9724 47.488C-51.4202 35.3723 -46.4306 23.9586 -35.6616 14.9485C-25.1919 6.18892 -10.9423 1.06887 2.86426 0.627965C16.6759 0.186933 31.1758 4.44816 40.7997 15.9507C59.1223 37.8503 54.6078 66.5391 33.5738 84.1376C13.0116 101.341 -17.9836 103.088 -36.6637 80.7613Z"
                                         fill="black" class="ball-stroke"></path>
                                     <g class="highlight">
                                         <path id="Vector_3"
@@ -197,7 +178,7 @@
                                         d="M376.472 95.628C361.274 77.463 358.47 56.1462 376.472 41.0844C394.474 26.0226 426.466 22.9194 441.664 41.0844C456.862 59.2495 453.442 82.9403 435.44 98.0021C417.438 113.064 391.67 113.793 376.472 95.628Z"
                                         fill="#F6D64F" class="ball-color-4"></path>
                                     <path
-                                        d="M376.472 95.6278C391.67 113.793 417.438 113.064 435.44 98.0019C453.442 82.9401 456.862 59.2492 441.664 41.0842L441.305 40.6626C426.209 23.2473 395.326 26.0456 377.326 40.3872L376.472 41.0842C358.751 55.9108 361.192 76.7984 375.769 94.7743L376.472 95.6278ZM370.336 100.761C361.984 90.7787 356.463 79.2646 356.028 67.488C355.58 55.3723 360.569 43.9586 371.338 34.9485C381.808 26.1889 396.058 21.0689 409.864 20.628C423.676 20.1869 438.176 24.4482 447.8 35.9507C466.122 57.8504 461.608 86.5391 440.574 104.138C420.012 121.341 389.016 123.088 370.336 100.761Z"
+                                        d="M376.472 95.6278C391.67 113.793 417.438 113.064 435.44 98.0019C453.442 82.9401 456.862 59.2492 441.664 41.0842L441.305 40.6626C426.209 23.2473 395.326 26.0456 377.326 40.3872L376.472 41.0842C358.751 55.9108 361.192 76.7984 375.769 94.7743L376.472 95.6278ZM370.336 100.761C361.984 90.7787 356.463 79.2646 356.028 67.488C355.58 55.3723 360.569 43.9586 371.338 34.9485C381.808 26.1889 396.058 21.0689 409.864 20.628C423.676 20.1869 438.176 24.4482 447.8 35.9507C466.122 57.8503 461.608 86.5391 440.574 104.138C420.012 121.341 389.016 123.088 370.336 100.761Z"
                                         fill="black" class="ball-stroke"></path>
                                     <g class="highlight">
                                         <path id="Vector_9"
@@ -226,7 +207,7 @@
                                 </g>
                                 <g class="ball">
                                     <path
-                                        d="M183.505 96.5983C171.119 81.7946 168.834 64.4223 183.505 52.1475C198.176 39.8728 224.248 37.3437 236.634 52.1475C249.02 66.9513 246.233 86.2583 231.561 98.5331C216.89 110.808 195.891 111.402 183.505 96.5983Z"
+                                        d="M183.505 96.5983C171.119 81.7946 168.834 64.4223 183.505 52.1475C198.176 39.8728 224.248 37.3437 236.634 52.1475C249.02 66.9513 246.232 86.2583 231.561 98.5331C216.89 110.808 195.891 111.402 183.505 96.5983Z"
                                         fill="#EFD8CB" class="ball-color-3"></path>
                                     <path
                                         d="M183.505 96.5982C195.891 111.402 216.89 110.808 231.562 98.5329C246.233 86.2581 249.019 66.9511 236.634 52.1474L236.341 51.8039C224.038 37.6108 198.87 39.8916 184.201 51.5795L183.505 52.1478C169.063 64.2307 171.052 81.2529 182.932 95.9025L183.505 96.5982ZM177.369 101.732C170.423 93.4297 165.735 83.7418 165.364 73.7199C164.981 63.3589 169.268 53.6286 178.372 46.0121C187.176 38.646 199.113 34.3666 210.671 33.9975C222.235 33.6283 234.552 37.192 242.769 47.0139C258.28 65.5523 254.398 89.8571 236.695 104.669C219.464 119.085 193.237 120.697 177.369 101.732Z"
@@ -399,7 +380,7 @@
                                         d="M84.6284 89.7672C84.6284 113.387 70.1666 129 46.6945 129C23.2224 129 -0.371616 113.387 -0.371616 89.7672C-0.371616 66.1475 23.2224 47 46.6945 47C70.1666 47 84.6284 66.1475 84.6284 89.7672Z"
                                         fill="#2B8CD8" class="ball-color-1"></path>
                                     <path
-                                        d="M84.6284 89.7676C84.6284 66.5171 70.6152 47.5994 47.7885 47.0137L46.6948 47C23.2227 47 -0.371616 66.1479 -0.371616 89.7676L-0.36771 90.3193C-0.00912702 113.263 22.6742 128.514 45.5942 128.988L46.6948 129C69.8001 129 84.1742 113.871 84.6176 90.8682L84.6284 89.7676ZM92.6284 89.7676C92.6283 103.207 88.4909 115.14 80.2485 123.768C71.9641 132.439 60.2662 137 46.6948 137C33.286 137 19.7699 132.567 9.45456 124.561C-0.950917 116.484 -8.3715 104.492 -8.37162 89.7676C-8.37162 75.1924 -1.09942 62.4358 9.08737 53.5098C19.2537 44.6017 32.8589 39 46.6948 39C60.7932 39.0001 72.5065 44.8303 80.5698 54.3584C88.5285 63.7631 92.6284 76.3763 92.6284 89.7676Z"
+                                        d="M84.6284 89.7676C84.6284 66.5171 70.6152 47.5994 47.7885 47.0137L46.6948 47C23.2227 47 -0.371616 66.1479 -0.371616 89.7676L-0.36771 90.3193C-0.00912666 113.263 22.6742 128.514 45.5942 128.988L46.6948 129C69.8001 129 84.1742 113.871 84.6176 90.8682L84.6284 89.7676ZM92.6284 89.7676C92.6283 103.207 88.4909 115.14 80.2485 123.768C71.9641 132.439 60.2662 137 46.6948 137C33.286 137 19.7699 132.567 9.45456 124.561C-0.950917 116.484 -8.3715 104.492 -8.37162 89.7676C-8.37162 75.1924 -1.09942 62.4358 9.08737 53.5098C19.2537 44.6017 32.8589 39 46.6948 39C60.7932 39.0001 72.5065 44.8303 80.5698 54.3584C88.5285 63.7631 92.6284 76.3763 92.6284 89.7676Z"
                                         fill="black" class="ball-stroke"></path>
                                     <g class="highlight">
                                         <path id="Vector_33"
@@ -444,18 +425,15 @@
                                 </g>
                             </g>
                             <g id="Ballpit">
-                                <path id="ballpit-fill"
-                                    d="M799.5 151H6.49999C4.16816 151 2.00317 151 0 150.985L0 112.831C4.12982 111.011 8.69686 110 13.5 110H806.5C811.303 110 815.87 111.011 820 112.831V150.631C813.534 151 806.282 151 799.5 151Z"
+                                <path class="ballpit-fill"
+                                    d="M799.5 151H6.49999C4.16816 151 2.00317 151 0 150.985L0 106.831C4.12982 105.011 8.69686 104 13.5 104H806.5C811.303 104 815.87 105.011 820 106.831V150.631C813.534 151 806.282 151 799.5 151Z"
                                     fill="#1F4686"></path>
-                                <g id="ballpit-stroke">
-                                    <path d="M806.5 98V110H13.5V98H806.5Z" fill="#00153C"></path>
-                                    <path
-                                        d="M0 112.831L0 100.036C4.26539 98.7128 8.79946 98 13.5 98V110C8.69686 110 4.12982 111.011 0 112.831Z"
-                                        fill="#00153C"></path>
-                                    <path
-                                        d="M820 100.036V112.831C815.87 111.011 811.303 110 806.5 110V98C811.201 98 815.735 98.7128 820 100.036Z"
-                                        fill="#00153C"></path>
-                                </g>
+                                <path class="ballpit-stroke"
+                                    d="M0 100.036V112.831C4.12982 111.011 8.69686 110 13.5 110H806.5C811.303 110 815.87 111.011 820 112.831V100.036C815.735 98.7128 811.201 98 806.5 98H13.5C8.79946 98 4.26539 98.7128 0 100.036Z"
+                                    fill="#1F4686"></path>
+                                <path class="ballpit-stroke-overlay"
+                                    d="M0 100.036V112.831C4.12982 111.011 8.69686 110 13.5 110H806.5C811.303 110 815.87 111.011 820 112.831V100.036C815.735 98.7128 811.201 98 806.5 98H13.5C8.79946 98 4.26539 98.7128 0 100.036Z"
+                                    fill="black" fill-opacity="0.5" style="mix-blend-mode:luminosity"></path>
                                 <g id="Highlight">
                                     <path id="smallellipse"
                                         d="M710.878 126.87L706.962 127.109C705.425 127.203 703.977 126.378 703.274 125.007C702.549 123.769 703.337 122.194 704.763 122.034L710.404 121.399C711.257 121.303 712.107 121.612 712.7 122.234C714.31 123.926 713.209 126.728 710.878 126.87Z"
@@ -822,31 +800,150 @@
             </div>
         </div>
 
-        <div class="controls border-y-2">
-            <div class="tabs tabs-box">
-                <input type="radio" name="controls_tabs" class="tab" aria-label="User Image" />
+        <div class="controls border-y-2 font-quantico">
+            <div class="tabs tabs-lift tabs-large [--tab-border-color:#d3ecfc]">
+                <input type="radio" name="controls_tabs" class="tab" aria-label="About The Ballpit" />
                 <div class="tab-content bg-base-100 border-base-300 p-6">
 
-                    <label for="uploadImg" class="">Choose a picture:</label>
+                    <div class="mb-8">
+                        <h1 class="text-dc-dark-navy text-3xl font-bold mb-2">Welcome to the Dashcon 2 Virtual Ballpit!
+                        </h1>
+                        <p class="text-dc-pink text-2xl italic">You asked, and we delivered!</p>
+                        <p class="my-2">Put you, your friends, or your blorbos in this lovely ballpit, and make yourself
+                            a lovely postcard!</p>
+                    </div>
 
-                    <input class="file-input file-input-dc-pink" type="file" id="uploadImg" name="uploadImg"
-                        accept="image/png, image/jpeg" onchange="loadFile(event)" />
+                    <div>
+                        <h3 class="text-xl text-dc-dark-navy font-bold mb-2">Technical Notes</h3>
+                        <p class="my-4 text-md">This was created using Vanilla JavaSript, <a
+                                href="https://tailwindcss.com/" class="text-dc-pink font-bold">Tailwind CSS</a>, <a
+                                href="https://daisyui.com/" class="text-dc-pink font-bold">DaisyUI</a> and <a
+                                href="https://yorickshan.github.io/html2canvas-pro/">HTML2Canvas Pro</a> by <a
+                                href="https://github.com/yorickshan" class="text-dc-pink font-bold">Shan Yinlong</a>
+                            (the extended forked version of <a href="https://html2canvas.hertzen.com/"
+                                class="text-dc-pink hover:font-bold">HTML2Canvas</a>, by <a href="https://hertzen.com/"
+                                class="text-dc-pink hover:font-bold">Niklas
+                                von Hertzen</a>).</p>
 
-                    <div class="slideContainer">
-                        <input type="range" min="0" value="100" max="200" class="slider" id="imgScale"
-                            onchange="scaleImg()">
+                        <p class="my-4 text-md">Your images are not saved by us, and never leaves your browser.</p>
+
+                        <p class="my-4 text-lg">Absolutely no AI was used to create this! This ballpit was lovingly
+                            crafted by Taro,
+                            a member of the Dashcon 2 team :)</p>
                     </div>
 
 
-                    <div class="moveButtons">
-                        <button id="up" onclick="up()" aria-label="Moves image up">↑</button>
-                        <button id="left" onclick="left()" aria-label="Moves image left">←</button>
-                        <button id="right" onclick="right()" aria-label="Moves image right">→</button>
-                        <button id="down" onclick="down()" aria-label="Moves image down">↓</button>
+
+
+                </div>
+                <input type="radio" name="controls_tabs" class="tab" aria-label="User Image" />
+                <div class="tab-content bg-base-100 border-base-300 p-6">
+                    <div class="block md:flex  md:justify-evenly md:flex-wrap">
+
+
+
+                        <div class="my-2 flex flex-col items-center">
+                            <h4 class="font-quantico mb-4 text-center">Choose Your Image:</h4>
+                            <input class=" file-input border-dc-blue file:bg-dc-blue file:text-white" type="file"
+                                id="uploadImg" name="uploadImg" accept="image/png, image/jpeg"
+                                onchange="loadFile(event)" />
+
+                            <img id="previewImg" class="w-[100%] max-w-[300px] my-6 border-4 border-dc-blue"
+                                alt="Preview of the user's uploaded picture" hidden>
+                        </div>
+
+                        <div
+                            class="divider divider-horizontal before:bg-dc-blue-100 after:bg-dc-blue-100 invisible sm:visible">
+                        </div>
+
+                        <div class="flex flex-col">
+                            <div class="my-2 flex flex-col items-center md:order-last">
+                                <h4 class="font-quantico mb-4 text-center">Scale Image:</h4>
+
+                                <input type="range" min="0" value="100" max="200"
+                                    class="range range-secondary text-dc-blue max-w-[200px] [--range-bg:#d3ecfc] [--range-thumb:white]"
+                                    id="imgScale" onchange="scaleImg()">
+                            </div>
+
+                            <div class="my-2 my-2 flex flex-col items-center">
+                                <h4 class="font-quantico mb-4 text-center">Move Image:</h4>
+                                <div class="moveButtons max-w-[200px]">
+                                    <button class="btn bg-dc-blue text-white" id="up" onclick="up()"
+                                        aria-label="Moves image up">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                            stroke-width="1.5" stroke="currentColor" class="size-6">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M4.5 10.5 12 3m0 0 7.5 7.5M12 3v18" />
+                                        </svg>
+
+                                    </button>
+                                    <button class="btn bg-dc-blue text-white" id="left" onclick="left()"
+                                        aria-label="Moves image left">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                            stroke-width="1.5" stroke="currentColor" class="size-6">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+                                        </svg>
+                                    </button>
+                                    <button class="btn bg-dc-blue text-white" id="right" onclick="right()"
+                                        aria-label="Moves image right">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                            stroke-width="1.5" stroke="currentColor" class="size-6">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                                        </svg>
+                                    </button>
+                                    <button class="btn bg-dc-blue text-white" id="down" onclick="down()"
+                                        aria-label="Moves image down">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                            stroke-width="1.5" stroke="currentColor" class="size-6">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M19.5 13.5 12 21m0 0-7.5-7.5M12 21V3" />
+                                        </svg>
+
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
 
-                <input type="radio" name="controls_tabs" class="tab" aria-label="Background Image" checked="checked" />
+                <input type="radio" name="controls_tabs" class="tab" aria-label="Ball Colours" />
+                <div class="tab-content bg-base-100 border-base-300 p-6">
+                    <div class="colorButtons flex flex-wrap justify-evenly gap-4">
+                        <div class="color-container">
+                            <label for="color-1">Ball Colour 1</label>
+                            <input type="color" class="color-input" id="color-1" name="color-1" value="#FF00F2" />
+                        </div>
+
+                        <div class="color-container">
+                            <label for="color-2">Ball Colour 2</label>
+                            <input type="color" id="color-2" class="color-input" name="color-2" value="#FBFF00" />
+                        </div>
+
+                        <div class="color-container">
+                            <label for="color-3">Ball Colour 3</label>
+                            <input type="color" class="color-input" id="color-3" name="color-3" value="#0015FF" />
+
+                        </div>
+
+                        <div class="color-container">
+                            <label for="color-4">Ball Colour 4</label>
+                            <input type="color" class="color-input" id="color-4" name="color-4" value="#FF0000" />
+                        </div>
+
+                        <div class="color-container">
+                            <label for="ballpitColor">Ballpit Colour</label>
+                            <input type="color" class="color-input" id="ballpitColor" name="ballpitColor"
+                                value="#FF0000" />
+                        </div>
+
+
+                    </div>
+                </div>
+                
+                <input type="radio" name="controls_tabs" class="tab" aria-label="Background" checked="checked" />
                 <div class="tab-content bg-base-100 border-base-300 p-6">
 
                     <div class="backgroundButtons">
@@ -887,49 +984,53 @@
                         </div>
                         <div class="backgroundTypeGradient">This is the gradient section</div>
                         <div class="backgroundTypeColor">This is the color section</div>
+
+                        <div>
+                            <div class="my-4">
+                                <label class="" for="greetingsFrom">Add "Greetings from Dashcon 2"
+                                    Text?</label>
+                                <input type="checkbox" class="toggle" id="greetingsFrom" />
+                            </div>
+
+
+                            <div class="my-4">
+                                <label class="" for="stupidPostcard">Add "I went to Dashcon 2 and all I got was this
+                                    stupid
+                                    postcard." Text?</label>
+                                <input type="checkbox" class="toggle toggle-secondary" id="stupidPostcard" />
+                            </div>
+
+                        </div>
                     </div>
 
                 </div>
-
-                <input type="radio" name="controls_tabs" class="tab" aria-label="Ball Colours" />
-                <div class="tab-content bg-base-100 border-base-300 p-6">
-                    <div class="colorButtons" style="margin-top:20px;">
-                        <input type="color" id="color-1" name="color-1" value="#FF00F2" />
-                        <input type="color" id="color-2" name="color-2" value="#FBFF00" />
-                        <input type="color" id="color-3" name="color-3" value="#0015FF" />
-                        <input type="color" id="color-4" name="color-4" value="#FF0000" />
-                    </div>
-                </div>
-
-                <input type="radio" name="controls_tabs" class="tab" aria-label="Add Text" />
-                <div class="tab-content bg-base-100 border-base-300 p-6">Tab content 4</div>
             </div>
-            <div class="join">
 
-                <button id="reset" class="btn join-item" onclick="reset()">Reset Position</button>
+            <div class="md:join">
 
-                <button id="openDownload" class="btn join-item" disabled>Complete Postcard</button>
+                <button id="reset" class="btn bg-dc-yellow md:join-item mb-1" onclick="reset()">Reset Position</button>
+
+                <button id="openDownload" class="btn bg-dc-pink text-white md:join-item mb-1" popovertarget="postcardBox"
+                    disabled>Complete Postcard</button>
 
             </div>
 
-
-            <div id="modal" role="dialog" aria-modal="true" class="z-[20]">
-                <div class="modalContent">
-
+            <div class="modal" id="postcardBox" popover>
+                <div class="modal-box">
                     <img id="downloadImg" src="" alt="">
-
-
-                    <div class="modalButtons">
-                        <button onclick="closeModal()">Go Back</button>
-                        <a href="" id="downloadLink" download>Download</a>
+                    <div class="my-2 mx-auto join">
+                        <button class="btn join-item bg-dc-pink text-white" onclick="revokeURL()" popovertarget="postcardBox"
+                            popovertargetaction="hide">Go Back</button>
+                        <a class="btn join-item bg-dc-blue text-white" id="downloadLink"
+                            download="virtual_ballpit.png">Download</a>
                     </div>
-
                 </div>
-
             </div>
 
             <script src="script.js"></script>
         </div>
+    </div>
+
 </body>
 
 </html>
