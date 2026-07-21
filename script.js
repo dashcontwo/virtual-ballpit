@@ -1,12 +1,13 @@
 // import html2canvas from 'html2canvas-pro';
 
 const $userImg = document.getElementById("userPic");
+const $previewImg = document.getElementById("previewImg");
 const $scaleRange = document.getElementById("imgScale");
 const $resetBtn = document.getElementById("reset");
 const $display = document.getElementById("display");
 const $canvas = document.getElementById("canvas");
 const $modalCapBtn = document.getElementById("openDownload");
-const $modal = document.getElementById("modal");
+const $modal = document.getElementById("postcardBox");
 
 // CUSTOM BALL COLOUR VARIABLES
 
@@ -15,12 +16,15 @@ const $color1Input = document.getElementById("color-1");
 const $color2Input = document.getElementById("color-2");
 const $color3Input = document.getElementById("color-3");
 const $color4Input = document.getElementById("color-4");
+const $ballpitColor = document.getElementById("ballpitColor")
 
 // Selecting All Of Each Colour, By Class
 const $allColor1 = document.querySelectorAll(".ball-color-1")
 const $allColor2 = document.querySelectorAll(".ball-color-2")
 const $allColor3 = document.querySelectorAll(".ball-color-3")
 const $allColor4 = document.querySelectorAll(".ball-color-4")
+const $ballpitFill = document.querySelectorAll(".ballpit-fill");
+const $ballpitStroke = document.querySelectorAll(".ballpit-stroke");
 
 
 
@@ -53,7 +57,7 @@ $color1Input.addEventListener("change", setBallColor);
 $color2Input.addEventListener("change", setBallColor);
 $color3Input.addEventListener("change", setBallColor);
 $color4Input.addEventListener("change", setBallColor);
-
+$ballpitColor.addEventListener("change", setBallColor);
 
 $backgroundTypeSection.addEventListener("change", (event) => {
     if (event.target.id == "imageBackground") {
@@ -71,7 +75,10 @@ $backgroundTypeSection.addEventListener("change", (event) => {
 
 // IMAGE CONTROL FUNCTIONS
 const loadFile = function (event) {
-    $userImg.src = URL.createObjectURL(event.target.files[0]);
+    let userImgUrl = URL.createObjectURL(event.target.files[0]);
+    $userImg.src = userImgUrl;
+    $previewImg.src = userImgUrl; 
+    $previewImg.hidden = false;
     reset();
     $modalCapBtn.disabled = false;
 };
@@ -136,14 +143,20 @@ function setBallColor() {
     $allColor4.forEach(element => {
         element.style.fill = $color4Input.value;
     });
+
+    $ballpitFill.forEach(element => {
+        element.style.fill = $ballpitColor.value;
+    })
+
+    $ballpitStroke.forEach(element => {
+        element.style.fill = $ballpitColor.value;
+    })
+
 }
 
-// // html2canvas(document.body).then(function(canvas) {
-//     document.body.appendChild(canvas);
-// });
+
 
 $modalCapBtn.addEventListener("click", async () => {
-    console.log('Work')
     let canvas = await html2canvas($canvas);
 
     canvas.toBlob((blob) => {
@@ -155,17 +168,7 @@ $modalCapBtn.addEventListener("click", async () => {
     openModal();
 })
 
-// Modal open and close
-function openModal() {
-    // Adds modal to view, and prevent body from scrolling
-    $modal.classList.add('show');
-    document.body.classList.toggle("modal-open");
-}
-
-function closeModal() {
-    // Removes the modal from view, and allow body scrolling again
-    $modal.classList.remove('show');
-    document.body.classList.toggle("modal-open");
+function revokeURL() {
     // Revokes object URL to prevent memory leakage
     URL.revokeObjectURL(imgURL);
 }
