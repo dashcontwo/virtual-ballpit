@@ -128,55 +128,6 @@ label[for="colorBackground"] {
     display:none;
 }
 
-
-/* Background Image Options Styling */
-
-
-
-
-
-/* #modal {
-    position: fixed;
-    left: 0;
-    top: 0;
-
-    width: 100%;
-    height: 100%;
-
-    display: grid;
-
-    grid-template-rows: 90% 10%;
-
-    background-color: rgba(0, 0, 0, 0.75);
-
-    opacity: 0;
-    visibility: hidden;
-    display:none;
-
-    transition: 0.5s;
-} */
-
-
-
-
-
-/* Aligns the content of the HD image, and sets it to have a maximum height of 95% of its container (to leave a little cushion for spacing) */
-/* #modal img {
-    width: 75%;
-    height: auto;
-} */
-
-/* body.modal-open {
-    overflow: hidden;
-} */
-
-/* This is toggled on and off to show hidden elements */
-/* #modal.show, div.show {
-    opacity: 1;
-    visibility: visible; 
-    display:grid;
-} */
-
 @media (min-width: 400px) {
     .backgroundType, .backgroundTypeImg {
         grid-template-columns: 1fr 1fr;
