@@ -56,7 +56,8 @@ let imgX = 0;
 let imgY = 0;
 
 // FUNCTIONS ON LOAD
-setBallColor();
+resetColor();
+
 
 // EVENT LISTENERS
 $color1Input.addEventListener("change", setBallColor);
