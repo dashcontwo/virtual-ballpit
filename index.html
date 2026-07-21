@@ -800,7 +800,7 @@
             </div>
         </div>
 
-        <div class="controls border-y-2 font-quantico">
+        <div class="controls font-quantico">
             <div class="tabs tabs-lift tabs-large [--tab-border-color:#d3ecfc]">
                 <input type="radio" name="controls_tabs" class="tab" aria-label="About The Ballpit" />
                 <div class="tab-content bg-base-100 border-base-300 p-6">
@@ -821,8 +821,8 @@
                                 href="https://yorickshan.github.io/html2canvas-pro/">HTML2Canvas Pro</a> by <a
                                 href="https://github.com/yorickshan" class="text-dc-pink font-bold">Shan Yinlong</a>
                             (the extended forked version of <a href="https://html2canvas.hertzen.com/"
-                                class="text-dc-pink hover:font-bold">HTML2Canvas</a>, by <a href="https://hertzen.com/"
-                                class="text-dc-pink hover:font-bold">Niklas
+                                class="text-dc-pink font-bold">HTML2Canvas</a>, by <a href="https://hertzen.com/"
+                                class="text-dc-pink font-bold">Niklas
                                 von Hertzen</a>).</p>
 
                         <p class="my-4 text-md">Your images are not saved by us, and never leaves your browser.</p>
@@ -852,9 +852,7 @@
                                 alt="Preview of the user's uploaded picture" hidden>
                         </div>
 
-                        <div
-                            class="divider divider-horizontal before:bg-dc-blue-100 after:bg-dc-blue-100 invisible sm:visible">
-                        </div>
+                        <div class="divider divider-horizontal before:bg-dc-blue-100 after:bg-dc-blue-100 invisible sm:visible"></div>
 
                         <div class="flex flex-col">
                             <div class="my-2 flex flex-col items-center md:order-last">
@@ -1008,10 +1006,11 @@
 
             <div class="md:join">
 
-                <button id="reset" class="btn bg-dc-yellow md:join-item mb-1" onclick="reset()">Reset Position</button>
+                <button id="reset" class="btn bg-dc-yellow md:join-item mb-1" onclick="resetImg()">Reset Position</button>
 
-                <button id="openDownload" class="btn bg-dc-pink text-white md:join-item mb-1" popovertarget="postcardBox"
-                    disabled>Complete Postcard</button>
+                <button id="reset" class="btn bg-dc-blue text-white md:join-item mb-1" onclick="resetColor()">Reset Ball Colors</button>
+
+                <button id="openDownload" class="btn bg-dc-pink text-white md:join-item mb-1" popovertarget="postcardBox" disabled>Complete Postcard</button>
 
             </div>
 
