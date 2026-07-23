@@ -47,6 +47,20 @@ const $bgGradSection = document.querySelector(".backgroundTypeGradient");
 const $bgColSection = document.querySelector(".backgroundTypeColor");
 
 
+// Add Text Options
+const $greetings = document.getElementById('Greetings');
+const $greetToggle = document.getElementById('greetingsFromToggle');
+const $greetColorContainer = document.getElementById('greetingsColorContainer');
+const $greetingsColorInput = document.getElementById('greetingsTextColor');
+const greetingTextColorDefault = "#FFFFFF";
+
+const $stupidPostcard = document.getElementById('StupidPostcard');
+const $stupidPostcardToggle = document.getElementById('stupidPostcardToggle');
+const $postcardColorContainer = document.getElementById('postcardColorContainer');
+const $postcardColorInput = document.getElementById('postcardTextColor');
+const postcardTextColorDefault = "#CE2E73"
+
+const textOptionsToHide = [$greetings, $greetColorContainer, $stupidPostcard, $postcardColorContainer]
 
 // URL for the modal image / result
 let imgURL;
@@ -57,6 +71,7 @@ let imgY = 0;
 
 // FUNCTIONS ON LOAD
 resetColor();
+resetText();
 
 
 // EVENT LISTENERS
@@ -69,16 +84,37 @@ $ballpitColor.addEventListener("change", setBallColor);
 $backgroundTypeSection.addEventListener("change", (event) => {
     if (event.target.id == "imageBackground") {
         closeTypeMenus();
-        $bgImgSection.classList.add("show");
+        $bgImgSection.classList.remove("hidden");
         // Set initial image background? Or wait until option picked?
     } else if (event.target.id == "gradientBackground") {
         closeTypeMenus();
-        $bgGradSection.classList.add("show");
+        $bgGradSection.classList.remove("hidden");
     } else if (event.target.id == "colorBackground") {
         closeTypeMenus();
-        $bgColSection.classList.add("show");
+        $bgColSection.classList.remove("hidden");
     }
 })
+
+$stupidPostcardToggle.addEventListener("change", (event) => {
+    $stupidPostcard.classList.toggle('hidden');
+    $postcardColorContainer.classList.toggle('hidden');
+})
+
+$greetToggle.addEventListener("change", (event) => {
+    $greetings.classList.toggle('hidden');
+    $greetColorContainer.classList.toggle('hidden');
+})
+
+// $ballpitColor.addEventListener("change", setBallColor);
+$greetingsColorInput.addEventListener("change", (event) => {
+    setTextColor($greetings, event.target.value)
+})
+
+$postcardColorInput.addEventListener("change", (event) => {
+    setTextColor($stupidPostcard, event.target.value)
+})
+
+
 
 // IMAGE CONTROL FUNCTIONS
 const loadFile = function (event) {
@@ -122,10 +158,31 @@ const scaleImg = function () {
     $userImg.style.transform = `translate(${imgX}px, ${imgY}px) scale(${$scaleRange.value / 100})`
 }
 
+function setTextColor(textElement, color) {
+    textElement.style.color = color;
+}
+
+function resetText() {
+    $greetToggle.checked = false;
+    $stupidPostcardToggle.checked = false;
+
+    setTextColor($greetings, greetingTextColorDefault);
+    setTextColor($stupidPostcard, postcardTextColorDefault);
+    
+    $greetingsColorInput.value = greetingTextColorDefault;
+    $postcardColorInput.value = postcardTextColorDefault;
+
+    textOptionsToHide.forEach(element => {
+        if(!element.classList.contains('hidden')) {
+            element.classList.add('hidden');
+        }
+    })
+}
+
 function closeTypeMenus() {
-    $bgImgSection.classList.remove("show");
-    $bgGradSection.classList.remove("show");
-    $bgColSection.classList.remove("show");
+    $bgImgSection.classList.add("hidden");
+    $bgGradSection.classList.add("hidden");
+    $bgColSection.classList.add("hidden");
 }
 
 function setBackground(background) {
