@@ -5,20 +5,23 @@
 .description,
 .controls {
     background-color: white;
-    /* box-sizing: content-box; */
     padding: 10px;
 }
 
 .color-container {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+}
+
+.color-container label {
+    margin-bottom: 0.5rem;
 }
 
 .color-container .color-input {
     border: none;
-    height: 100px;
-    width: 100px;
+    min-height: 100px;
+    min-width: 100px;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
 }
 
 
@@ -117,6 +120,11 @@ label[for="colorBackground"] {
     visibility: hidden; */
     display:none;
 }
+
+.hidden {
+    display: none;
+}
+
 
 @media (min-width: 400px) {
     .backgroundType, .backgroundTypeImg {
