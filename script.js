@@ -93,7 +93,6 @@ const loadFile = function (event) {
 // Resets the transforms of the images by removing the transform and scale styles, and resetting the slider and X and Y values for translation.
 function resetImg() {
     $userImg.style.transform = "";
-    $userImg.style.scale = "";
     $scaleRange.value = 100;
     imgX = 0;
     imgY = 0;
@@ -101,26 +100,26 @@ function resetImg() {
 
 const up = function () {
     imgY -= 5;
-    $userImg.style.transform = `translate(${imgX}px, ${imgY}px)`;
+    $userImg.style.transform = `translate(${imgX}px, ${imgY}px) scale(${$scaleRange.value / 100})`;
 };
 
 const down = function () {
     imgY += 5;
-    $userImg.style.transform = `translate(${imgX}px, ${imgY}px)`;
+    $userImg.style.transform = `translate(${imgX}px, ${imgY}px) scale(${$scaleRange.value / 100})`;
 };
 
 const left = function () {
     imgX -= 5;
-    $userImg.style.transform = `translate(${imgX}px, ${imgY}px)`;
+    $userImg.style.transform = `translate(${imgX}px, ${imgY}px) scale(${$scaleRange.value / 100})`;
 };
 
 const right = function () {
     imgX += 5;
-    $userImg.style.transform = `translate(${imgX}px, ${imgY}px)`;
+    $userImg.style.transform = `translate(${imgX}px, ${imgY}px) scale(${$scaleRange.value / 100})`;
 };
 
 const scaleImg = function () {
-    $userImg.style.scale = $scaleRange.value / 100;
+    $userImg.style.transform = `translate(${imgX}px, ${imgY}px) scale(${$scaleRange.value / 100})`
 }
 
 function closeTypeMenus() {
