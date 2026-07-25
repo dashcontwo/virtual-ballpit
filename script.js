@@ -25,8 +25,7 @@ const $allColor3 = document.querySelectorAll(".ball-color-3")
 const $allColor4 = document.querySelectorAll(".ball-color-4")
 const $ballpitColorFills = document.querySelectorAll(".ballpit-fill, .ballpit-stroke")
 
-const $presetColorFieldset = document.getElementById("presetOptions");
-const $allPresetColorRadios = $presetColorFieldset.querySelectorAll("input[type='radio']")
+const $allPresetColorRadios = document.getElementById("presetOptions").querySelectorAll("input[type='radio']")
 
 const defaultColors = {
     ballpit: '#1F4686',
