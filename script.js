@@ -25,6 +25,9 @@ const $allColor3 = document.querySelectorAll(".ball-color-3")
 const $allColor4 = document.querySelectorAll(".ball-color-4")
 const $ballpitColorFills = document.querySelectorAll(".ballpit-fill, .ballpit-stroke")
 
+const $presetColorFieldset = document.getElementById("presetOptions");
+const $allPresetColorRadios = $presetColorFieldset.querySelectorAll("input[type='radio']")
+
 const defaultColors = {
     ballpit: '#1F4686',
     ball1: '#2B8CD8',
@@ -153,7 +156,6 @@ $modalCapBtn.addEventListener("click", async () => {
         document.getElementById("downloadImg").src = imgURL;
     })
 
-    openModal();
 })
 
 // IMAGE CONTROL FUNCTIONS
@@ -231,6 +233,7 @@ function setBackground(background) {
 }
 
 function resetBallColors() {
+    $allPresetColorRadios.forEach(radio => radio.checked = false)
     setAllBallColors(defaultColors);
 }
 
