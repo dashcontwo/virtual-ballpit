@@ -16,23 +16,54 @@ const $color1Input = document.getElementById("color-1");
 const $color2Input = document.getElementById("color-2");
 const $color3Input = document.getElementById("color-3");
 const $color4Input = document.getElementById("color-4");
-const $ballpitColor = document.getElementById("ballpitColor")
+const $ballpitColorInput = document.getElementById("ballpitColor")
 
 // Selecting All Of Each Colour, By Class
 const $allColor1 = document.querySelectorAll(".ball-color-1")
 const $allColor2 = document.querySelectorAll(".ball-color-2")
 const $allColor3 = document.querySelectorAll(".ball-color-3")
 const $allColor4 = document.querySelectorAll(".ball-color-4")
-const $ballpitFill = document.querySelectorAll(".ballpit-fill");
-const $ballpitStroke = document.querySelectorAll(".ballpit-stroke");
+const $ballpitColorFills = document.querySelectorAll(".ballpit-fill, .ballpit-stroke")
 
-// Original colour values
-const ballpitColor = '#1F4686';
-const ballColor1 = '#2B8CD8';
-const ballColor2 = '#B672DB';
-const ballColor3 = '#EFD8CB';
-const ballColor4 = '#F6D64F';
+const defaultColors = {
+    ballpit: '#1F4686',
+    ball1: '#2B8CD8',
+    ball2: '#B672DB',
+    ball3: '#EFD8CB',
+    ball4: '#F6D64F'
+}
 
+const edmundColors = {
+    ballpit: '#171F2A',
+    ball1: '#174A7C',
+    ball2: '#391D33',
+    ball3: '#DA3966',
+    ball4: '#F8DB3B'
+}
+
+const melColors = {
+    ballpit: '#190E26',
+    ball1: '#74789E',
+    ball2: '#22141F',
+    ball3: '#956798',
+    ball4: '#FBF9F6'
+}
+
+const valColors = {
+    ballpit: '#6C190D',
+    ball1: '#BC563C',
+    ball2: '#FFCC32',
+    ball3: '#ED8D02',
+    ball4: '#FFF9D3'
+}
+
+const blorboColors = {
+    ballpit: '#0B0A17',
+    ball1: '#152137',
+    ball2: '#0085BF',
+    ball3: '#A9D2D9',
+    ball4: '#184055'
+}
 
 // BACKGROUND VARIABLES
 
@@ -70,16 +101,16 @@ let imgX = 0;
 let imgY = 0;
 
 // FUNCTIONS ON LOAD
-resetColor();
+resetBallColors();
 resetText();
 
 
 // EVENT LISTENERS
-$color1Input.addEventListener("change", setBallColor);
-$color2Input.addEventListener("change", setBallColor);
-$color3Input.addEventListener("change", setBallColor);
-$color4Input.addEventListener("change", setBallColor);
-$ballpitColor.addEventListener("change", setBallColor);
+$color1Input.addEventListener("change", () => { setSingleColorByInput($color1Input, $allColor1)});
+$color2Input.addEventListener("change", () => { setSingleColorByInput($color2Input, $allColor2)});
+$color3Input.addEventListener("change", () => { setSingleColorByInput($color3Input, $allColor3)});
+$color4Input.addEventListener("change", () => { setSingleColorByInput($color4Input, $allColor4)});
+$ballpitColorInput.addEventListener("change", () => { setSingleColorByInput($ballpitColorInput, $ballpitColorFills)});
 
 $backgroundTypeSection.addEventListener("change", (event) => {
     if (event.target.id == "imageBackground") {
@@ -105,7 +136,6 @@ $greetToggle.addEventListener("change", (event) => {
     $greetColorContainer.classList.toggle('hidden');
 })
 
-// $ballpitColor.addEventListener("change", setBallColor);
 $greetingsColorInput.addEventListener("change", (event) => {
     setTextColor($greetings, event.target.value)
 })
@@ -114,13 +144,23 @@ $postcardColorInput.addEventListener("change", (event) => {
     setTextColor($stupidPostcard, event.target.value)
 })
 
+$modalCapBtn.addEventListener("click", async () => {
+    let canvas = await html2canvas($canvas);
 
+    canvas.toBlob((blob) => {
+        imgURL = URL.createObjectURL(blob);
+        document.getElementById("downloadLink").href = imgURL;
+        document.getElementById("downloadImg").src = imgURL;
+    })
+
+    openModal();
+})
 
 // IMAGE CONTROL FUNCTIONS
 const loadFile = function (event) {
     let userImgUrl = URL.createObjectURL(event.target.files[0]);
     $userImg.src = userImgUrl;
-    $previewImg.src = userImgUrl; 
+    $previewImg.src = userImgUrl;
     $previewImg.hidden = false;
     resetImg();
     $modalCapBtn.disabled = false;
@@ -168,12 +208,13 @@ function resetText() {
 
     setTextColor($greetings, greetingTextColorDefault);
     setTextColor($stupidPostcard, postcardTextColorDefault);
-    
+
+
     $greetingsColorInput.value = greetingTextColorDefault;
     $postcardColorInput.value = postcardTextColorDefault;
 
     textOptionsToHide.forEach(element => {
-        if(!element.classList.contains('hidden')) {
+        if (!element.classList.contains('hidden')) {
             element.classList.add('hidden');
         }
     })
@@ -189,57 +230,39 @@ function setBackground(background) {
     $canvas.style.background = background;
 }
 
-function resetColor() {
-    $color1Input.value = ballColor1;
-    $color2Input.value = ballColor2;
-    $color3Input.value = ballColor3;
-    $color4Input.value = ballColor4;
-    $ballpitColor.value = ballpitColor;
-
-    setBallColor();
+function resetBallColors() {
+    setAllBallColors(defaultColors);
 }
 
-function setBallColor() {
-    // For each element of the color, change the fill of the element to the new value. 
-    $allColor1.forEach(element => {
-        element.style.fill = $color1Input.value;
-    });
+function setAllBallColors(colorObj) {
+    setColorInputValue($color1Input, colorObj.ball1);
+    setColorInputValue($color2Input, colorObj.ball2);
+    setColorInputValue($color3Input, colorObj.ball3);
+    setColorInputValue($color4Input, colorObj.ball4);
+    setColorInputValue($ballpitColorInput, colorObj.ballpit);
 
-    $allColor2.forEach(element => {
-        element.style.fill = $color2Input.value;
-    });
-
-    $allColor3.forEach(element => {
-        element.style.fill = $color3Input.value;
-    });
-
-    $allColor4.forEach(element => {
-        element.style.fill = $color4Input.value;
-    });
-
-    $ballpitFill.forEach(element => {
-        element.style.fill = $ballpitColor.value;
-    })
-
-    $ballpitStroke.forEach(element => {
-        element.style.fill = $ballpitColor.value;
-    })
-
+    setSingleColorByValue(colorObj.ball1, $allColor1);    
+    setSingleColorByValue(colorObj.ball2, $allColor2);
+    setSingleColorByValue(colorObj.ball3, $allColor3);
+    setSingleColorByValue(colorObj.ball4, $allColor4);
+    setSingleColorByValue(colorObj.ballpit, $ballpitColorFills);
 }
 
+function setColorInputValue(colorInput, newValue) {
+    colorInput.value = newValue;
+}
 
+function setSingleColorByInput(colorInput, elementsToChange) {
+    elementsToChange.forEach(element => {
+        element.style.fill = colorInput.value;
+    });
+}
 
-$modalCapBtn.addEventListener("click", async () => {
-    let canvas = await html2canvas($canvas);
-
-    canvas.toBlob((blob) => {
-        imgURL = URL.createObjectURL(blob);
-        document.getElementById("downloadLink").href = imgURL;
-        document.getElementById("downloadImg").src = imgURL;
-    })
-
-    openModal();
-})
+function setSingleColorByValue(colorValue, elementsToChange) {
+    elementsToChange.forEach(element => {
+        element.style.fill = colorValue;
+    });
+}
 
 function revokeURL() {
     // Revokes object URL to prevent memory leakage
