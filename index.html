@@ -102,8 +102,8 @@
     </style>
 </head>
 
-<body class="bg-dc-dark-navy">
-    <div class="max-w-[820px] mx-auto py-8">
+<body class="bg-dc-dark-navy py-8">
+    <div class="max-w-[820px] mx-auto ring-6 ring-dc-dark-navy-900 shadow-xl">
 
         <div id="display" class="aspect-8/5 m-auto">
             <div id="canvas" class="absolute aspect-8/5 w-full max-w-[820px] h-auto bg-white">
@@ -112,7 +112,8 @@
                     <h2 class="text-lg 2xs:text-2xl xs:text-3xl sm:text-4xl md:text-5xl italic text-center font-serif font-bold text-shadow-[-1px_1px_1px_black] hidden"
                         id="Greetings">
                         Greetings From Dashcon 2</h2>
-                    <h2 class="2xs:text-lg xs:text-xl sm:text-2xl md:text-4xl text-center font-bold italic font-quantico text-shadow-[-1px_1px_1px_black] hidden" id="StupidPostcard">I went to Virtual Dash 2026 and all I got was this stupid
+                    <h2 class="2xs:text-lg xs:text-xl sm:text-2xl md:text-4xl text-center font-bold italic font-quantico text-shadow-[-1px_1px_1px_black] hidden"
+                        id="StupidPostcard">I went to Virtual Dash 2026 and all I got was this stupid
                         postcard
                     </h2>
                 </div>
@@ -853,11 +854,8 @@
                 <input type="radio" name="controls_tabs" class="tab" aria-label="User Image" checked="checked" />
                 <div class="tab-content bg-base-100 border-base-300 p-6">
                     <div class="block md:flex  md:justify-evenly md:flex-wrap">
-
-
-
                         <div class="my-2 flex flex-col items-center">
-                            <h4 class="font-quantico mb-4 text-center">Choose Your Image:</h4>
+                            <h4 class="mb-4 text-center font-bold">Choose Your Image:</h4>
                             <input class=" file-input border-dc-blue file:bg-dc-blue file:text-white" type="file"
                                 id="uploadImg" name="uploadImg" accept="image/png, image/jpeg"
                                 onchange="loadFile(event)" />
@@ -872,7 +870,7 @@
 
                         <div class="flex flex-col">
                             <div class="my-2 flex flex-col items-center md:order-last">
-                                <h4 class="font-quantico mb-4 text-center">Scale Image:</h4>
+                                <h4 class="mb-4 text-center font-bold">Scale Image:</h4>
 
                                 <input type="range" min="0" value="100" max="200"
                                     class="range range-secondary text-dc-blue max-w-[200px] [--range-bg:#d3ecfc] [--range-thumb:white]"
@@ -880,7 +878,7 @@
                             </div>
 
                             <div class="my-2 my-2 flex flex-col items-center">
-                                <h4 class="font-quantico mb-4 text-center">Move Image:</h4>
+                                <h4 class="mb-4 text-center font-bold">Move Image:</h4>
                                 <div class="moveButtons max-w-[200px]">
                                     <button class="btn bg-dc-blue text-white" id="up" onclick="up()"
                                         aria-label="Moves image up">
@@ -925,35 +923,109 @@
 
                 <input type="radio" name="controls_tabs" class="tab" aria-label="Ball Colours" />
                 <div class="tab-content bg-base-100 border-base-300 p-6">
-                    <div class="colorButtons flex flex-wrap justify-evenly gap-4">
-                        <div class="color-container">
-                            <label for="color-1">Ball Colour 1</label>
-                            <input type="color" class="color-input" id="color-1" name="color-1" value="#2B8CD8" />
+                    <div class="md:grid md:grid-cols-[1fr_100px_1fr]">
+                        <div>
+                            <h4 class="mb-4 text-center font-bold">Choose Your Colours:</h4>
+
+                            <div class="colorButtons flex flex-wrap justify-center gap-4 md:gap-x-12">
+                                <div class="color-container w-full 2xs:w-min">
+                                    <label for="color-1">Ball Colour 1</label>
+                                    <input type="color" class="color-input w-full 2xs:w-min" id="color-1" name="color-1"
+                                        value="#2B8CD8" />
+                                </div>
+
+                                <div class="color-container w-full 2xs:w-min">
+                                    <label for="color-2">Ball Colour 2</label>
+                                    <input type="color" id="color-2" class="color-input w-full 2xs:w-min" name="color-2"
+                                        value="#B672DB" />
+                                </div>
+
+                                <div class="color-container w-full 2xs:w-min">
+                                    <label for="color-3">Ball Colour 3</label>
+                                    <input type="color" class="color-input w-full 2xs:w-min" id="color-3" name="color-3"
+                                        value="#EFD8CB" />
+
+                                </div>
+
+                                <div class="color-container w-full 2xs:w-min">
+                                    <label for="color-4">Ball Colour 4</label>
+                                    <input type="color" class="color-input w-full 2xs:w-min" id="color-4" name="color-4"
+                                        value="#F6D64F" />
+                                </div>
+
+                                <div class="color-container grow">
+                                    <label for="ballpitColor">Ballpit Colour</label>
+                                    <input type="color" class="color-input w-full" id="ballpitColor" name="ballpitColor"
+                                        value="#1F4686" />
+                                </div>
+                            </div>
                         </div>
 
-                        <div class="color-container">
-                            <label for="color-2">Ball Colour 2</label>
-                            <input type="color" id="color-2" class="color-input" name="color-2" value="#B672DB" />
+
+                        <div
+                            class="divider divider-horizontal before:bg-dc-blue-100 after:bg-dc-blue-100 max-md:hidden justify-self-center">
+                            OR</div>
+
+                        <div
+                            class="divider before:bg-dc-blue-100 after:bg-dc-blue-100 md:hidden justify-self-center my-12">
+                            OR</div>
+
+                        <div role="radiogroup" aria-labelledby="preset-options">
+                            <h4 class="mb-2 text-center font-bold" id="preset-options">Choose From Preset Options:</h4>
+                            <h5 class="mb-4 text-sm italic text-center">Based on our very own Cirque!</h5>
+                            <fieldset id="presetOptions" class="grid xs:grid-cols-2 gap-2">
+                                <div
+                                    class="radio-card-container aspect-5/3 bg-[url(images/edmund-ballpit-option.png)] bg-cover hover:shadow-lg transition-all has-checked:ring-4 ring-dc-pink rounded-sm">
+                                    <input class="hidden" id="edmundColors" type="radio" name="radio"
+                                        onclick="setAllBallColors(edmundColors)"
+                                        aria-labelledby="Edmund-themed colors, blue, purple, pink, and yellow"
+                                        role="radio">
+                                    <label
+                                        class="flex flex-col pt-4 p-2 cursor-pointer w-full h-full font-semibold text-white uppercase text-center text-lg 2xs:text-2xl xs:text-3xl sm:text-4xl md:text-xl"
+                                        for="edmundColors">
+                                        Edmund
+
+                                    </label>
+                                </div>
+                                <div
+                                    class="radio-card-container aspect-5/3 bg-[url(images/mel-ballpit-option.png)] bg-cover hover:shadow-lg transition-all has-checked:ring-4 ring-dc-pink rounded-sm">
+                                    <input class="hidden" id="melColors" type="radio" name="radio"
+                                        onclick="setAllBallColors(melColors)"
+                                        aria-labelledby="Mel-themed colors, shades of purple" role="radio">
+                                    <label
+                                        class="flex flex-col pt-4 p-2 cursor-pointer w-full h-full font-semibold text-white uppercase text-center text-lg 2xs:text-2xl xs:text-3xl sm:text-4xl md:text-xl"
+                                        for="melColors">
+                                        Mel
+
+                                    </label>
+                                </div>
+                                <div
+                                    class="radio-card-container aspect-5/3 bg-[url(images/val-ballpit-option.png)] bg-cover hover:shadow-lg transition-all has-checked:ring-4 ring-dc-pink rounded-sm">
+                                    <input class="hidden" id="valColors" type="radio" name="radio"
+                                        onclick="setAllBallColors(valColors)"
+                                        aria-labelledby="Val-themed colors, shades of yellow and orange" role="radio">
+                                    <label
+                                        class="flex flex-col pt-4 p-2 cursor-pointer w-full h-full font-semibold text-white uppercase text-center text-lg 2xs:text-2xl xs:text-3xl sm:text-4xl md:text-xl"
+                                        for="valColors">
+                                        Val
+
+                                    </label>
+                                </div>
+                                <div
+                                    class="radio-card-container aspect-5/3 bg-[url(images/blorbo-ballpit-option.png)] bg-cover hover:shadow-lg transition-all has-checked:ring-4 ring-dc-pink rounded-sm">
+                                    <input class="hidden" id="blorboColors" type="radio" name="radio"
+                                        onclick="setAllBallColors(blorboColors)"
+                                        aria-labelledby="Blorbo-themed colors, shades of blue" role="radio">
+                                    <label
+                                        class="flex flex-col pt-4 p-2 cursor-pointer w-full h-full font-semibold text-white uppercase text-center text-lg 2xs:text-2xl xs:text-3xl sm:text-4xl md:text-xl"
+                                        for="blorboColors">
+                                        Blorbo
+
+                                    </label>
+                                </div>
+                            </fieldset>
+
                         </div>
-
-                        <div class="color-container">
-                            <label for="color-3">Ball Colour 3</label>
-                            <input type="color" class="color-input" id="color-3" name="color-3" value="#EFD8CB" />
-
-                        </div>
-
-                        <div class="color-container">
-                            <label for="color-4">Ball Colour 4</label>
-                            <input type="color" class="color-input" id="color-4" name="color-4" value="#F6D64F" />
-                        </div>
-
-                        <div class="color-container">
-                            <label for="ballpitColor">Ballpit Colour</label>
-                            <input type="color" class="color-input" id="ballpitColor" name="ballpitColor"
-                                value="#1F4686" />
-                        </div>
-
-
                     </div>
                 </div>
 
@@ -1009,24 +1081,29 @@
                                 </div>
 
                                 <div class="color-container items-center mb-4 hidden" id="greetingsColorContainer">
-                                    <label class="text-sm" for="greetingsTextColor">"Greetings From Dashcon 2" Text Color</label>
+                                    <label class="text-sm" for="greetingsTextColor">"Greetings From Dashcon 2" Text
+                                        Color</label>
                                     <input type="color" class="color-input" id="greetingsTextColor"
                                         name="greetingsTextColor" value="#FFFFFF" />
                                 </div>
                             </div>
 
-                            <div class="divider divider-horizontal justify-self-center before:bg-dc-blue-100 after:bg-dc-blue-100 invisible sm:visible"></div>
+                            <div
+                                class="divider divider-horizontal before:bg-dc-blue-100 after:bg-dc-blue-100 max-md:hidden justify-self-center">
+                                OR</div>
 
                             <div>
                                 <div class="my-4 text-center">
-                                    <label class="font-bold" for="stupidPostcardToggle">Add "I went to Dashcon 2 and all I got
+                                    <label class="font-bold" for="stupidPostcardToggle">Add "I went to Dashcon 2 and all
+                                        I got
                                         was
                                         this stupid postcard." Text?</label>
                                     <input type="checkbox" class="toggle toggle-secondary" id="stupidPostcardToggle" />
                                 </div>
 
                                 <div class="color-container items-center mb-4 hidden" id="postcardColorContainer">
-                                    <label class="text-sm" for="postcardTextColor">"This Stupid Postcard" Text Color</label>
+                                    <label class="text-sm" for="postcardTextColor">"This Stupid Postcard" Text
+                                        Color</label>
                                     <input type="color" class="color-input" id="postcardTextColor"
                                         name="postcardTextColor" value="#CE2E73" />
                                 </div>
@@ -1044,7 +1121,8 @@
                 <button id="reset" class="btn bg-dc-yellow md:join-item mb-1" onclick="resetImg()">Reset
                     Position</button>
 
-                <button id="reset" class="btn bg-dc-blue text-white md:join-item mb-1" onclick="resetColor()">Reset Ball
+                <button id="reset" class="btn bg-dc-blue text-white md:join-item mb-1" onclick="resetBallColors()">Reset
+                    Ball
                     Colors</button>
 
                 <button id="openDownload" class="btn bg-dc-pink text-white md:join-item mb-1"
