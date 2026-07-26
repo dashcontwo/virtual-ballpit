@@ -23,8 +23,12 @@
 
 .block-color-container .block-color-input:focus {
     border: 3px solid #ce2e73;
-    border-radius: 0.25em;
+    border-radius: 0.5em;
 
+}
+
+p {
+    color: #262338
 }
 
 .block-color-container .block-color-input.ball-input:focus {
