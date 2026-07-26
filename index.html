@@ -9,7 +9,7 @@
 
 
     <script src="html2canvas-pro.min.js" type="module"></script>
-
+    
 
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
@@ -814,10 +814,9 @@
 
             </div>
         </div>
-
-        <div class="controls font-quantico">
+        <div class="controls font-quantico bg-white p-4">
             <div class="tabs tabs-lift tabs-large [--tab-border-color:#d3ecfc]">
-                <input type="radio" name="controls_tabs" class="tab" aria-label="About The Ballpit" />
+                <input type="radio" name="controls_tabs" class="tab" aria-label="About The Ballpit" checked="checked" />
                 <div class="tab-content bg-base-100 border-base-300 p-6">
 
                     <div class="mb-8">
@@ -851,7 +850,7 @@
 
 
                 </div>
-                <input type="radio" name="controls_tabs" class="tab" aria-label="User Image" checked="checked" />
+                <input type="radio" name="controls_tabs" class="tab" aria-label="User Image" />
                 <div class="tab-content bg-base-100 border-base-300 p-6">
                     <div class="block md:flex  md:justify-evenly md:flex-wrap">
                         <div class="my-2 flex flex-col items-center">
@@ -928,35 +927,36 @@
                             <h4 class="mb-4 text-center font-bold">Choose Your Colours:</h4>
 
                             <div class="colorButtons flex flex-wrap justify-center gap-4 md:gap-x-12">
-                                <div class="color-container w-full 2xs:w-min">
+                                <div class="block-color-container w-full 2xs:w-min">
                                     <label for="color-1">Ball Colour 1</label>
-                                    <input type="color" class="color-input w-full 2xs:w-min" id="color-1" name="color-1"
-                                        value="#2B8CD8" />
+                                    <input type="color" class="block-color-input ball-input aspect-square w-[50%] 2xs:w-min h-auto"
+                                        id="color-1" name="color-1" value="#2B8CD8" />
                                 </div>
 
-                                <div class="color-container w-full 2xs:w-min">
+                                <div class="block-color-container w-full 2xs:w-min">
                                     <label for="color-2">Ball Colour 2</label>
-                                    <input type="color" id="color-2" class="color-input w-full 2xs:w-min" name="color-2"
+                                    <input type="color" id="color-2"
+                                        class="block-color-input ball-input aspect-square w-[50%] 2xs:w-min h-auto" name="color-2"
                                         value="#B672DB" />
                                 </div>
 
-                                <div class="color-container w-full 2xs:w-min">
+                                <div class="block-color-container w-full 2xs:w-min">
                                     <label for="color-3">Ball Colour 3</label>
-                                    <input type="color" class="color-input w-full 2xs:w-min" id="color-3" name="color-3"
-                                        value="#EFD8CB" />
+                                    <input type="color" class="block-color-input ball-input aspect-square w-[50%] 2xs:w-min h-auto"
+                                        id="color-3" name="color-3" value="#EFD8CB" />
 
                                 </div>
 
-                                <div class="color-container w-full 2xs:w-min">
+                                <div class="block-color-container w-full 2xs:w-min">
                                     <label for="color-4">Ball Colour 4</label>
-                                    <input type="color" class="color-input w-full 2xs:w-min" id="color-4" name="color-4"
-                                        value="#F6D64F" />
+                                    <input type="color" class="block-color-input ball-input aspect-square w-[50%] 2xs:w-min h-auto"
+                                        id="color-4" name="color-4" value="#F6D64F" />
                                 </div>
 
-                                <div class="color-container grow">
+                                <div class="block-color-container grow">
                                     <label for="ballpitColor">Ballpit Colour</label>
-                                    <input type="color" class="color-input w-full" id="ballpitColor" name="ballpitColor"
-                                        value="#1F4686" />
+                                    <input type="color" class="block-color-input rounded-3xl w-full" id="ballpitColor"
+                                        name="ballpitColor" value="#1F4686" />
                                 </div>
                             </div>
                         </div>
@@ -975,10 +975,9 @@
                             <h5 class="mb-4 text-sm italic text-center">Based on our very own Cirque!</h5>
                             <fieldset id="presetOptions" class="grid xs:grid-cols-2 gap-2">
                                 <div
-                                    class="radio-card-container aspect-5/3 bg-[url(images/edmund-ballpit-option.png)] bg-cover hover:shadow-lg transition-all has-checked:ring-4 ring-dc-pink rounded-sm">
+                                    class="radio-card-container aspect-5/3 bg-[url(images/preset-backgrounds/edmund-ballpit-option.png)] bg-cover hover:shadow-lg transition-all has-checked:ring-4 ring-dc-pink rounded-lg">
                                     <input class="hidden" id="edmundColors" type="radio" name="radio"
                                         onclick="setAllBallColors(edmundColors)"
-                                        aria-labelledby="Edmund-themed colors, blue, purple, pink, and yellow"
                                         role="radio">
                                     <label
                                         class="flex flex-col pt-4 p-2 cursor-pointer w-full h-full font-semibold text-white uppercase text-center text-lg 2xs:text-2xl xs:text-3xl sm:text-4xl md:text-xl"
@@ -988,10 +987,9 @@
                                     </label>
                                 </div>
                                 <div
-                                    class="radio-card-container aspect-5/3 bg-[url(images/mel-ballpit-option.png)] bg-cover hover:shadow-lg transition-all has-checked:ring-4 ring-dc-pink rounded-sm">
+                                    class="radio-card-container aspect-5/3 bg-[url(images/preset-backgrounds/mel-ballpit-option.png)] bg-cover hover:shadow-lg transition-all has-checked:ring-4 ring-dc-pink rounded-lg">
                                     <input class="hidden" id="melColors" type="radio" name="radio"
-                                        onclick="setAllBallColors(melColors)"
-                                        aria-labelledby="Mel-themed colors, shades of purple" role="radio">
+                                        onclick="setAllBallColors(melColors)" role="radio">
                                     <label
                                         class="flex flex-col pt-4 p-2 cursor-pointer w-full h-full font-semibold text-white uppercase text-center text-lg 2xs:text-2xl xs:text-3xl sm:text-4xl md:text-xl"
                                         for="melColors">
@@ -1000,10 +998,10 @@
                                     </label>
                                 </div>
                                 <div
-                                    class="radio-card-container aspect-5/3 bg-[url(images/val-ballpit-option.png)] bg-cover hover:shadow-lg transition-all has-checked:ring-4 ring-dc-pink rounded-sm">
+                                    class="radio-card-container aspect-5/3 bg-[url(images/preset-backgrounds/val-ballpit-option.png)] bg-cover hover:shadow-lg transition-all has-checked:ring-4 ring-dc-pink rounded-lg">
                                     <input class="hidden" id="valColors" type="radio" name="radio"
                                         onclick="setAllBallColors(valColors)"
-                                        aria-labelledby="Val-themed colors, shades of yellow and orange" role="radio">
+                                         role="radio">
                                     <label
                                         class="flex flex-col pt-4 p-2 cursor-pointer w-full h-full font-semibold text-white uppercase text-center text-lg 2xs:text-2xl xs:text-3xl sm:text-4xl md:text-xl"
                                         for="valColors">
@@ -1012,10 +1010,10 @@
                                     </label>
                                 </div>
                                 <div
-                                    class="radio-card-container aspect-5/3 bg-[url(images/blorbo-ballpit-option.png)] bg-cover hover:shadow-lg transition-all has-checked:ring-4 ring-dc-pink rounded-sm">
+                                    class="radio-card-container aspect-5/3 bg-[url(images/preset-backgrounds/blorbo-ballpit-option.png)] bg-cover hover:shadow-lg transition-all has-checked:ring-4 ring-dc-pink rounded-lg">
                                     <input class="hidden" id="blorboColors" type="radio" name="radio"
                                         onclick="setAllBallColors(blorboColors)"
-                                        aria-labelledby="Blorbo-themed colors, shades of blue" role="radio">
+                                         role="radio">
                                     <label
                                         class="flex flex-col pt-4 p-2 cursor-pointer w-full h-full font-semibold text-white uppercase text-center text-lg 2xs:text-2xl xs:text-3xl sm:text-4xl md:text-xl"
                                         for="blorboColors">
@@ -1080,32 +1078,26 @@
                                     <input type="checkbox" class="toggle toggle-secondary" id="greetingsFromToggle" />
                                 </div>
 
-                                <div class="color-container items-center mb-4 hidden" id="greetingsColorContainer">
-                                    <label class="text-sm" for="greetingsTextColor">"Greetings From Dashcon 2" Text
-                                        Color</label>
-                                    <input type="color" class="color-input" id="greetingsTextColor"
-                                        name="greetingsTextColor" value="#FFFFFF" />
+                                <div class="flex-color-container flex justify-center items-center gap-2 mb-4 hidden" id="greetingsColorContainer">
+                                        <input class="flex-color-input" type="color" id="greetingsTextColor" name="greetingsTextColor" value="#FFFFFF" >
+                                    
+                                    
+                                    <label class="text-sm" for="greetingsTextColor">"Greetings From Dashcon 2" Text Color</label>
                                 </div>
                             </div>
 
-                            <div
-                                class="divider divider-horizontal before:bg-dc-blue-100 after:bg-dc-blue-100 max-md:hidden justify-self-center">
-                                OR</div>
+                            <div class="divider divider-horizontal before:bg-dc-blue-100 after:bg-dc-blue-100 max-md:hidden justify-self-center"></div>
 
                             <div>
                                 <div class="my-4 text-center">
-                                    <label class="font-bold" for="stupidPostcardToggle">Add "I went to Dashcon 2 and all
-                                        I got
-                                        was
-                                        this stupid postcard." Text?</label>
+                                    <label class="font-bold" for="stupidPostcardToggle">Add "I went to Dashcon 2 and all I got was this stupid postcard." Text?</label>
                                     <input type="checkbox" class="toggle toggle-secondary" id="stupidPostcardToggle" />
                                 </div>
-
-                                <div class="color-container items-center mb-4 hidden" id="postcardColorContainer">
+                                <div class="flex-color-container flex justify-center items-center gap-2 mb-4" id="postcardColorContainer">
+                                    <input class="flex-color-input" type="color" id="postcardTextColor" name="postcardTextColor" value="#CE2E73" >
+                                    
                                     <label class="text-sm" for="postcardTextColor">"This Stupid Postcard" Text
                                         Color</label>
-                                    <input type="color" class="color-input" id="postcardTextColor"
-                                        name="postcardTextColor" value="#CE2E73" />
                                 </div>
                             </div>
 
