@@ -2,39 +2,65 @@
     clip-path: polygon(0% 0%, 0% 100%, 100% 100%, 100% 0%);
 }
 
-.description,
-.controls {
-    background-color: white;
-    padding: 10px;
-}
+/* Big Block Color Input Display */
 
-.color-container {
+.block-color-container {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.color-container label {
+.block-color-container label {
     margin-bottom: 0.5rem;
 }
 
-.color-container .color-input {
+.block-color-container .block-color-input {
     border: none;
     min-height: 100px;
     min-width: 100px;
     box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
 }
 
+.block-color-container .block-color-input:focus {
+    border: 3px solid #ce2e73;
+    border-radius: 0.25em;
 
-.color-container .color-input::-webkit-color-swatch-wrapper {
+}
+
+.block-color-container .block-color-input.ball-input:focus {
+    border-radius: 50%;
+}
+
+input[type="color" i]::-webkit-color-swatch {
+    border: none;
+
+}
+
+input[type="color" i]::-webkit-color-swatch-wrapper {
     padding: 0;
     border: none;
 }
 
-.color-container .color-input::-webkit-color-swatch, .color-container .color-input::-moz-color-swatch {
+input[type="color" i]::-webkit-color-swatch, input[type="color" i]::-moz-color-swatch {
     border-radius: 0.25em;
     border: none;
 }
+
+/* Flex Color Inputs */
+.flex-color-input {
+    width: 2em;
+    height: 2em;
+    aspect-ratio: 1 / 1;
+    border: 2px solid black;
+    border-radius: 50%;
+}
+
+.flex-color-input[type="color" i]::-webkit-color-swatch,
+.flex-color-input[type="color" i]::-moz-color-swatch, .ball-input[type="color" i]::-webkit-color-swatch,
+.ball-input[type="color" i]::-moz-color-swatch, .ball-input {
+    border-radius: 50%;
+}
+
 
 
 /* Move Buttons */
@@ -63,84 +89,6 @@ div.moveButtons {
     grid-area: down;
 }
 
-
-/* CARD INPUTS */
-.backgroundType, .backgroundTypeImg {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 10px;
-}
-
-.backgroundTypeImg {
-    margin-top: 20px;
-}
-
-.backgroundType label, .backgroundTypeImg label {
-    position:relative;
-    display:block;
-    border: 1px solid black;
-    border-radius: 0.5em;
-    padding: 1em;
-    cursor: pointer;
-    transition: all 250ms ease-in-out;
-    height: 100px;
-    box-sizing: border-box;
-}
-
-.backgroundType input, .backgroundTypeImg input  {
-    float:right;
-
-}
-
-.backgroundType label h4, .backgroundTypeImg label h4 {
-    font-family:Arial, Helvetica, sans-serif;
-    margin:0px;
-}
-
-label:has(input[type="radio"]:checked) {
-    border: 5px solid black;
-
-}
-
-label[for="imageBackground"] {
-    background: url("/images/og-dashcon-ballpit.jpg") center center;
-}
-
-label[for="gradientBackground"] {
-    background: linear-gradient(to bottom, blue, yellow);
-}
-
-label[for="colorBackground"] {
-    background: pink;
-}
-
-
-/* Hides by default - will add the show class when */
-.backgroundTypeImg, .backgroundTypeGradient, .backgroundTypeColor {
-    /* opacity: 0;
-    visibility: hidden; */
-    display:none;
-}
-
 .hidden {
     display: none;
-}
-
-
-@media (min-width: 400px) {
-    .backgroundType, .backgroundTypeImg {
-        grid-template-columns: 1fr 1fr;
-    }
-}
-
-@media (min-width: 650px) {
-    .backgroundType, .backgroundTypeImg {
-        grid-template-columns: 1fr 1fr 1fr;
-    }
-}
-
-@media (min-width: 820px) {
-    .backgroundType, .backgroundTypeImg {
-        grid-template-columns: repeat(4, 1fr);
-    }
 }
