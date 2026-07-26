@@ -1049,41 +1049,40 @@
                             </div>
 
                             <input type="radio" name="backgroundStyle"
-                                class="tab grow transition-all checked:bg-dc-yellow-50" aria-label="Gradient Background"
-                                checked="checked" id="gradientBackground" />
+                                class="tab grow transition-all checked:bg-dc-yellow-50" aria-label="Gradient Background" id="gradientBackground"/>
                             <div class="tab-content bg-base-100 border-base-300 p-6">
-                                <div class="flex flex-wrap items-center gap-4">
-                                    <div class="block-color-container flex items-center gap-2 mb-4">
+                                <div class="grid 2xs:flex 2xs:flex-wrap items-center gap-4 max-xs:justify-center">
+                                    <div class="block-color-container flex items-center gap-2 mb-4 order-0">
                                         <label class="text-sm" for="gradientColor1">Gradient Color 1</label>
                                         <input class="block-color-input" type="color" id="gradientColor1"
                                         name="gradientColor1" value="#FF0000" onchange="setBackground('gradient', getGradient())">
                                     </div>
 
-                                    <div class="divider before:bg-dc-blue-100 after:bg-dc-blue-100 max-xs:hidden self-center show 2xs:grow"></div>
+                                    <div class="divider before:bg-dc-blue-100 after:bg-dc-blue-100 max-xs:hidden self-center 2xs:grow order-1"></div>
 
-                                    <div class="block-color-container flex items-center sm:order-5 gap-2 mb-4">
+                                    <div class="block-color-container flex items-center order-2 sm:order-4 gap-2 mb-4">
                                         <label class="text-sm" for="gradientColor2">Gradient Color 2</label>
                                         <input class="block-color-input" type="color" id="gradientColor2"
                                         name="gradientColor2" value="#1D2640" onchange="setBackground('gradient', getGradient())">
                                     </div>
 
-                                    <div class="divider min-h-24 before:bg-dc-blue-100 after:bg-dc-blue-100 self-center grow order-4 max-xs:hidden"></div>
+                                    <div class="divider min-h-24 before:bg-dc-blue-100 after:bg-dc-blue-100 self-center grow order-3 max-sm:hidden"></div>
 
-                                    <div class="sm:flex flex-col items-center input-sm 2xs:input-md xs:w-[40%] sm:w-[30%] md:w-[20%] -translate-y-4 order-3 my-2">
+                                    <div class="flex flex-col items-center input-sm 2xs:input-md xs:w-[40%] max-sm:basis-full sm:w-[30%] md:w-[20%] -translate-y-4 order-4 sm:order-2 max-sm:grow my-2">
                                         <label for="degrees" class="mb-2">Degrees</label>
 
-                                        <label class="input ">
+                                        <label class="input text-sm">
                                             <input type="number" id="degrees" placeholder="90" min="0" max="360"
                                                 value="90" onchange="setBackground('gradient', getGradient())"/>
                                             <span class="label">deg</span>
                                         </label>
                                     </div>
-
-
-                                    
-
                                 </div>
 
+                                <div class="flex justify-center">
+                                    <button class="btn bg-dc-blue text-white max-2xs:h-fit" onclick="resetBackground()">Remove Background Gradient</button>
+                                </div>
+                                
                             </div>
 
                             <input type="radio" name="backgroundStyle"
@@ -1153,6 +1152,18 @@
 
                                         </label>
                                     </div>
+                                    <div
+                                        class="radio-card-container aspect-8/5 bg-[#1D2640] bg-dc-dark-navy bg-cover hover:shadow-lg transition-all has-checked:ring-4 ring-dc-pink grow rounded-lg">
+                                        <input class="hidden" id="noImg" type="radio" name="imageOption"
+                                            onclick="setBackground('img', '')"
+                                            role="radio">
+                                        <label
+                                            class="flex flex-col flex-wrap justify-end pt-4 p-2 cursor-pointer w-full h-full font-semibold text-white uppercase text-sm 2xs:text-xl text-shadow-xl"
+                                            for="noImg">
+                                            None
+
+                                        </label>
+                                    </div>
 
 
                                 </fieldset>
@@ -1180,9 +1191,7 @@
                                 </div>
                             </div>
 
-                            <div
-                                class="divider divider-horizontal before:bg-dc-blue-100 after:bg-dc-blue-100 max-md:hidden justify-self-center">
-                            </div>
+                            <div class="divider divider-horizontal before:bg-dc-blue-100 after:bg-dc-blue-100 max-md:hidden justify-self-center"></div>
 
                             <div>
                                 <div class="my-4 text-center">
