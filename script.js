@@ -77,7 +77,7 @@ const $bgImgSection = document.querySelector(".backgroundTypeImg");
 const $bgGradSection = document.querySelector(".backgroundTypeGradient");
 const $bgColSection = document.querySelector(".backgroundTypeColor");
 
-const gradientAngle;
+let gradientAngle;
 
 const backgroundImageOptions = {
     ogDashcon: 'images/background-options/og-dashcon-ballpit.png',
