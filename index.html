@@ -106,7 +106,8 @@
     <div class="max-w-[820px] mx-auto ring-6 shadow-xl">
 
         <div id="display" class="aspect-8/5 m-auto">
-            <div id="canvas" class="absolute aspect-8/5 w-full max-w-[820px] h-auto bg-contain" style="background-color: #1D2640;">
+            <div id="canvas" class="absolute aspect-8/5 w-full max-w-[820px] h-auto bg-contain"
+                style="background-color: #1D2640;">
 
                 <div class="absolute top-[10%] w-full flex flex-col items-center z-[20]">
                     <h2 class="text-lg 2xs:text-2xl xs:text-3xl sm:text-4xl md:text-5xl italic text-center font-serif font-bold text-shadow-[-1px_1px_1px_black] hidden"
@@ -1036,7 +1037,7 @@
                         <div id="backgroundTypeSection" class="tabs tabs-box transition-all">
                             <input type="radio" name="backgroundStyle"
                                 class="tab grow transition-all checked:bg-dc-yellow-50" aria-label="Color Background"
-                                id="colorBackground"/>
+                                id="colorBackground" />
 
 
                             <div class="tab-content bg-base-100 border-base-300 p-6">
@@ -1051,10 +1052,38 @@
                                 class="tab grow transition-all checked:bg-dc-yellow-50" aria-label="Gradient Background"
                                 checked="checked" id="gradientBackground" />
                             <div class="tab-content bg-base-100 border-base-300 p-6">
-                                <label class="input">
-                                    <input type="text" placeholder="domain name" />
-                                    <span class="label">.com</span>
-                                </label>
+                                <div class="flex flex-wrap items-center gap-4">
+                                    <div class="block-color-container flex items-center gap-2 mb-4">
+                                        <label class="text-sm" for="gradientColor1">Gradient Color 1</label>
+                                        <input class="block-color-input" type="color" id="gradientColor1"
+                                        name="gradientColor1" value="#FF0000" onchange="setBackground('gradient', getGradient())">
+                                    </div>
+
+                                    <div class="divider before:bg-dc-blue-100 after:bg-dc-blue-100 max-xs:hidden self-center show 2xs:grow"></div>
+
+                                    <div class="block-color-container flex items-center sm:order-5 gap-2 mb-4">
+                                        <label class="text-sm" for="gradientColor2">Gradient Color 2</label>
+                                        <input class="block-color-input" type="color" id="gradientColor2"
+                                        name="gradientColor2" value="#1D2640" onchange="setBackground('gradient', getGradient())">
+                                    </div>
+
+                                    <div class="divider min-h-24 before:bg-dc-blue-100 after:bg-dc-blue-100 self-center grow order-4 max-xs:hidden"></div>
+
+                                    <div class="sm:flex flex-col items-center input-sm 2xs:input-md xs:w-[40%] sm:w-[30%] md:w-[20%] -translate-y-4 order-3 my-2">
+                                        <label for="degrees" class="mb-2">Degrees</label>
+
+                                        <label class="input ">
+                                            <input type="number" id="degrees" placeholder="90" min="0" max="360"
+                                                value="90" onchange="setBackground('gradient', getGradient())"/>
+                                            <span class="label">deg</span>
+                                        </label>
+                                    </div>
+
+
+                                    
+
+                                </div>
+
                             </div>
 
                             <input type="radio" name="backgroundStyle"
@@ -1065,7 +1094,8 @@
                                     <div
                                         class="radio-card-container aspect-8/5 bg-[url(images/background-options/og-dashcon-ballpit.png)] bg-contain hover:shadow-lg transition-all has-checked:ring-4 ring-dc-pink rounded-lg">
                                         <input class="hidden" id="dashcon2014" type="radio" name="imageOption"
-                                            onclick="setBackground('img', backgroundImageOptions.ogDashcon)" role="radio">
+                                            onclick="setBackground('img', backgroundImageOptions.ogDashcon)"
+                                            role="radio">
                                         <label
                                             class="flex flex-col flex-wrap justify-end pt-4 p-2 cursor-pointer w-full h-full font-semibold text-white uppercase text-sm 2xs:text-xl text-shadow-lg"
                                             for="dashcon2014">
@@ -1075,8 +1105,8 @@
                                     </div>
                                     <div
                                         class="radio-card-container aspect-8/5 bg-[#1D2640] bg-[url(images/background-options/cirque-lineup.png)] bg-cover hover:shadow-lg transition-all has-checked:ring-4 ring-dc-pink rounded-xl">
-                                        <input class="hidden" id="cirque" type="radio" name="imageOption" onclick="setBackground('img', backgroundImageOptions.cirque)"
-                                            role="radio">
+                                        <input class="hidden" id="cirque" type="radio" name="imageOption"
+                                            onclick="setBackground('img', backgroundImageOptions.cirque)" role="radio">
                                         <label
                                             class="flex flex-col flex-wrap justify-end pt-4 p-2 cursor-pointer w-full h-full font-semibold text-white uppercase text-sm 2xs:text-xl text-shadow-xl"
                                             for="cirque">
@@ -1087,7 +1117,8 @@
 
                                     <div
                                         class="radio-card-container aspect-8/5 bg-[#1D2640] bg-[url(images/background-options/edmund-on-color-background.png)] bg-cover hover:shadow-lg transition-all has-checked:ring-4 ring-dc-pink rounded-lg">
-                                        <input class="hidden" id="edSwirly" type="radio" name="imageOption" onclick="setBackground('img', backgroundImageOptions.edmundSolo)"
+                                        <input class="hidden" id="edSwirly" type="radio" name="imageOption"
+                                            onclick="setBackground('img', backgroundImageOptions.edmundSolo)"
                                             role="radio">
                                         <label
                                             class="flex flex-col flex-wrap justify-end pt-4 p-2 cursor-pointer w-full h-full font-semibold text-white uppercase text-sm 2xs:text-xl text-shadow-xl"
@@ -1099,7 +1130,8 @@
 
                                     <div
                                         class="radio-card-container aspect-8/5 bg-[#1D2640] bg-[url(images/background-options/eeby-deeby.jpg)] bg-cover hover:shadow-lg transition-all has-checked:ring-4 ring-dc-pink rounded-lg">
-                                        <input class="hidden" id="eebyDeeby" type="radio" name="imageOption" onclick="setBackground('img', backgroundImageOptions.eebyDeeby)"
+                                        <input class="hidden" id="eebyDeeby" type="radio" name="imageOption"
+                                            onclick="setBackground('img', backgroundImageOptions.eebyDeeby)"
                                             role="radio">
                                         <label
                                             class="flex flex-col flex-wrap justify-end pt-4 p-2 cursor-pointer w-full h-full font-semibold text-white uppercase text-sm 2xs:text-xl text-shadow-xl"
@@ -1111,7 +1143,8 @@
 
                                     <div
                                         class="radio-card-container aspect-8/5 bg-[#1D2640] bg-[url(images/background-options/horse-plinko.jpg)] bg-cover hover:shadow-lg transition-all has-checked:ring-4 ring-dc-pink grow rounded-lg">
-                                        <input class="hidden" id="plinko" type="radio" name="imageOption" onclick="setBackground('img', backgroundImageOptions.horsePlinko)"
+                                        <input class="hidden" id="plinko" type="radio" name="imageOption"
+                                            onclick="setBackground('img', backgroundImageOptions.horsePlinko)"
                                             role="radio">
                                         <label
                                             class="flex flex-col flex-wrap justify-end pt-4 p-2 cursor-pointer w-full h-full font-semibold text-white uppercase text-sm 2xs:text-xl text-shadow-xl"
@@ -1120,8 +1153,8 @@
 
                                         </label>
                                     </div>
-                                    
-                                    
+
+
                                 </fieldset>
 
                             </div>
@@ -1148,7 +1181,8 @@
                             </div>
 
                             <div
-                                class="divider divider-horizontal before:bg-dc-blue-100 after:bg-dc-blue-100 max-md:hidden justify-self-center"></div>
+                                class="divider divider-horizontal before:bg-dc-blue-100 after:bg-dc-blue-100 max-md:hidden justify-self-center">
+                            </div>
 
                             <div>
                                 <div class="my-4 text-center">
@@ -1178,11 +1212,13 @@
                 <button id="resetPos" class="btn bg-dc-yellow md:join-item mb-1" onclick="resetImg()">Reset
                     Position</button>
 
-                <button id="resetColors" class="btn bg-dc-blue text-white md:join-item mb-1" onclick="resetBallColors()">Reset
+                <button id="resetColors" class="btn bg-dc-blue text-white md:join-item mb-1"
+                    onclick="resetBallColors()">Reset
                     Ball
                     Colors</button>
-                
-                <button id="resetBg" class="btn bg-dc-purple text-white md:join-item mb-1" onclick="resetBackground()">Reset Background</button>
+
+                <button id="resetBg" class="btn bg-dc-purple text-white md:join-item mb-1"
+                    onclick="resetBackground()">Reset Background</button>
 
                 <button id="openDownload" class="btn bg-dc-pink text-white md:join-item mb-1"
                     popovertarget="postcardBox" disabled>Complete Postcard</button>
