@@ -66,6 +66,10 @@ const blorboColors = {
 }
 
 // BACKGROUND VARIABLES
+// Tabs input
+const $gradientTab = document.getElementById("gradientBackground");
+const $imageBackground = document.getElementById("imageBackground");
+
 // Color Background
 const $canvasBackgroundColor = document.getElementById("canvasBackgroundColor");
 const canvasBackgroundDefault = "#1D2640";
@@ -122,6 +126,11 @@ $color2Input.addEventListener("change", () => { setSingleColorByInput($color2Inp
 $color3Input.addEventListener("change", () => { setSingleColorByInput($color3Input, $allColor3) });
 $color4Input.addEventListener("change", () => { setSingleColorByInput($color4Input, $allColor4) });
 $ballpitColorInput.addEventListener("change", () => { setSingleColorByInput($ballpitColorInput, $ballpitColorFills) });
+
+$gradientTab.addEventListener("change", () => {
+    setBackground('gradient', getGradient());
+    $allImageRadios.forEach(radio => radio.checked = false);
+})
 
 $stupidPostcardToggle.addEventListener("change", (event) => {
     $stupidPostcard.classList.toggle('hidden');
