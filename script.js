@@ -71,9 +71,9 @@ const $canvasBackgroundColor = document.getElementById("canvasBackgroundColor");
 const canvasBackgroundDefault = "#1D2640";
 
 // Gradient Background
-let gradientAngle;
-let gradientColor1;
-let gradientColor2;
+const $degreesInput = document.getElementById("degrees");
+const $gradientColor1Input = document.getElementById("gradientColor1");
+const $gradientColor2Input = document.getElementById("gradientColor2");
 
 // Image Backgrounds
 const backgroundImageOptions = {
@@ -226,6 +226,11 @@ function closeTypeMenus() {
     $bgColSection.classList.add("hidden");
 }
 
+
+function getGradient() {
+    return `${$degreesInput.value}deg, ${$gradientColor1Input.value}, ${$gradientColor2Input.value}`;
+}
+
 function setBackground(type, backgroundValue) {
     if(type === "gradient") {
         $canvas.style.backgroundImage = `linear-gradient(${backgroundValue})`;
@@ -243,8 +248,7 @@ function resetBackground() {
     $allImageRadios.forEach(radio => radio.checked = false)
     $canvas.style.backgroundColor = canvasBackgroundDefault;
     setInputValue($canvasBackgroundColor, canvasBackgroundDefault);
-    $canvas.style.backgroundImage = "";
-    
+    $canvas.style.backgroundImage = "";   
 }
 
 
