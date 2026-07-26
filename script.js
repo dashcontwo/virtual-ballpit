@@ -66,19 +66,16 @@ const blorboColors = {
 }
 
 // BACKGROUND VARIABLES
+// Color Background
+const $canvasBackgroundColor = document.getElementById("canvasBackgroundColor");
+const canvasBackgroundDefault = "#1D2640";
 
-// Background Type Inputs
-const $backgroundTypeSection = document.querySelector(".backgroundType");
-const $backgroundTypeImage = document.getElementById("imageBackground");
-const $backgroundTypeGradient = document.getElementById("gradientBackground");
-const $backgroundTypeColor = document.getElementById("colorBackground");
-
-const $bgImgSection = document.querySelector(".backgroundTypeImg");
-const $bgGradSection = document.querySelector(".backgroundTypeGradient");
-const $bgColSection = document.querySelector(".backgroundTypeColor");
-
+// Gradient Background
 let gradientAngle;
+let gradientColor1;
+let gradientColor2;
 
+// Image Backgrounds
 const backgroundImageOptions = {
     ogDashcon: 'images/background-options/og-dashcon-ballpit.png',
     cirque: 'images/background-options/cirque-lineup.png',
@@ -86,6 +83,8 @@ const backgroundImageOptions = {
     eebyDeeby: 'images/background-options/eeby-deeby.jpg',
     horsePlinko: 'images/background-options/horse-plinko.jpg'
 }
+
+const $allImageRadios = document.getElementById("imageOptionsSection").querySelectorAll("input[type='radio']");
 
 // Add Text Options
 const $greetings = document.getElementById('Greetings');
@@ -110,30 +109,19 @@ let imgX = 0;
 let imgY = 0;
 
 // FUNCTIONS ON LOAD
+resetBackground();
 resetBallColors();
 resetText();
 
 
 // EVENT LISTENERS
+$canvasBackgroundColor.addEventListener("change", () => { setBackgroundColor($canvasBackgroundColor.value) })
+
 $color1Input.addEventListener("change", () => { setSingleColorByInput($color1Input, $allColor1) });
 $color2Input.addEventListener("change", () => { setSingleColorByInput($color2Input, $allColor2) });
 $color3Input.addEventListener("change", () => { setSingleColorByInput($color3Input, $allColor3) });
 $color4Input.addEventListener("change", () => { setSingleColorByInput($color4Input, $allColor4) });
 $ballpitColorInput.addEventListener("change", () => { setSingleColorByInput($ballpitColorInput, $ballpitColorFills) });
-
-$backgroundTypeSection.addEventListener("change", (event) => {
-    if (event.target.id == "imageBackground") {
-        closeTypeMenus();
-        $bgImgSection.classList.remove("hidden");
-        // Set initial image background? Or wait until option picked?
-    } else if (event.target.id == "gradientBackground") {
-        closeTypeMenus();
-        $bgGradSection.classList.remove("hidden");
-    } else if (event.target.id == "colorBackground") {
-        closeTypeMenus();
-        $bgColSection.classList.remove("hidden");
-    }
-})
 
 $stupidPostcardToggle.addEventListener("change", (event) => {
     $stupidPostcard.classList.toggle('hidden');
@@ -238,8 +226,25 @@ function closeTypeMenus() {
     $bgColSection.classList.add("hidden");
 }
 
-function setBackground(background) {
-    $canvas.style.backgroundImage = background;
+function setBackground(type, backgroundValue) {
+    if(type === "gradient") {
+        $canvas.style.backgroundImage = `linear-gradient(${backgroundValue})`;
+    } else if (type === "img") {
+        $canvas.style.backgroundImage = `url(${backgroundValue})`
+    }
+    
+}
+
+function setBackgroundColor(color) {
+    $canvas.style.backgroundColor = color;
+}
+
+function resetBackground() {
+    $allImageRadios.forEach(radio => radio.checked = false)
+    $canvas.style.backgroundColor = canvasBackgroundDefault;
+    setInputValue($canvasBackgroundColor, canvasBackgroundDefault);
+    $canvas.style.backgroundImage = "";
+    
 }
 
 
@@ -250,11 +255,11 @@ function resetBallColors() {
 }
 
 function setAllBallColors(colorObj) {
-    setColorInputValue($color1Input, colorObj.ball1);
-    setColorInputValue($color2Input, colorObj.ball2);
-    setColorInputValue($color3Input, colorObj.ball3);
-    setColorInputValue($color4Input, colorObj.ball4);
-    setColorInputValue($ballpitColorInput, colorObj.ballpit);
+    setInputValue($color1Input, colorObj.ball1);
+    setInputValue($color2Input, colorObj.ball2);
+    setInputValue($color3Input, colorObj.ball3);
+    setInputValue($color4Input, colorObj.ball4);
+    setInputValue($ballpitColorInput, colorObj.ballpit);
 
     setSingleColorByValue(colorObj.ball1, $allColor1);
     setSingleColorByValue(colorObj.ball2, $allColor2);
@@ -263,8 +268,8 @@ function setAllBallColors(colorObj) {
     setSingleColorByValue(colorObj.ballpit, $ballpitColorFills);
 }
 
-function setColorInputValue(colorInput, newValue) {
-    colorInput.value = newValue;
+function setInputValue(input, newValue) {
+    input.value = newValue;
 }
 
 function setSingleColorByInput(colorInput, elementsToChange) {
