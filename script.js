@@ -77,6 +77,15 @@ const $bgImgSection = document.querySelector(".backgroundTypeImg");
 const $bgGradSection = document.querySelector(".backgroundTypeGradient");
 const $bgColSection = document.querySelector(".backgroundTypeColor");
 
+const gradientAngle;
+
+const backgroundImageOptions = {
+    ogDashcon: 'images/background-options/og-dashcon-ballpit.png',
+    cirque: 'images/background-options/cirque-lineup.png',
+    edmundSolo: 'images/background-options/edmund-on-color-background.png',
+    eebyDeeby: 'images/background-options/eeby-deeby.jpg',
+    horsePlinko: 'images/background-options/horse-plinko.jpg'
+}
 
 // Add Text Options
 const $greetings = document.getElementById('Greetings');
@@ -143,14 +152,6 @@ $greetingsColorInput.addEventListener("change", (event) => {
 $postcardColorInput.addEventListener("change", (event) => {
     setTextColor($stupidPostcard, event.target.value)
 })
-
-// import html2canvas from 'html2canvas-pro';
-
-// html2canvas(element, {
-//     imageSmoothing: true,
-//     scale: 2,
-//     imageSmoothingQuality: 'high'  // 'low' | 'medium' | 'high'
-// });
 
 $modalCapBtn.addEventListener("click", async () => {
     let canvas = await html2canvas($canvas, {
@@ -238,8 +239,10 @@ function closeTypeMenus() {
 }
 
 function setBackground(background) {
-    $canvas.style.background = background;
+    $canvas.style.backgroundImage = background;
 }
+
+
 
 function resetBallColors() {
     $allPresetColorRadios.forEach(radio => radio.checked = false)
