@@ -1,5 +1,3 @@
-// import html2canvas from 'html2canvas-pro';
-
 const $userImg = document.getElementById("userPic");
 const $previewImg = document.getElementById("previewImg");
 const $scaleRange = document.getElementById("imgScale");
@@ -108,11 +106,11 @@ resetText();
 
 
 // EVENT LISTENERS
-$color1Input.addEventListener("change", () => { setSingleColorByInput($color1Input, $allColor1)});
-$color2Input.addEventListener("change", () => { setSingleColorByInput($color2Input, $allColor2)});
-$color3Input.addEventListener("change", () => { setSingleColorByInput($color3Input, $allColor3)});
-$color4Input.addEventListener("change", () => { setSingleColorByInput($color4Input, $allColor4)});
-$ballpitColorInput.addEventListener("change", () => { setSingleColorByInput($ballpitColorInput, $ballpitColorFills)});
+$color1Input.addEventListener("change", () => { setSingleColorByInput($color1Input, $allColor1) });
+$color2Input.addEventListener("change", () => { setSingleColorByInput($color2Input, $allColor2) });
+$color3Input.addEventListener("change", () => { setSingleColorByInput($color3Input, $allColor3) });
+$color4Input.addEventListener("change", () => { setSingleColorByInput($color4Input, $allColor4) });
+$ballpitColorInput.addEventListener("change", () => { setSingleColorByInput($ballpitColorInput, $ballpitColorFills) });
 
 $backgroundTypeSection.addEventListener("change", (event) => {
     if (event.target.id == "imageBackground") {
@@ -146,8 +144,20 @@ $postcardColorInput.addEventListener("change", (event) => {
     setTextColor($stupidPostcard, event.target.value)
 })
 
+// import html2canvas from 'html2canvas-pro';
+
+// html2canvas(element, {
+//     imageSmoothing: true,
+//     scale: 2,
+//     imageSmoothingQuality: 'high'  // 'low' | 'medium' | 'high'
+// });
+
 $modalCapBtn.addEventListener("click", async () => {
-    let canvas = await html2canvas($canvas);
+    let canvas = await html2canvas($canvas, {
+        imageSmoothing: true,
+        scale: 2,
+        imageSmoothingQuality: 'high'
+    });
 
     canvas.toBlob((blob) => {
         imgURL = URL.createObjectURL(blob);
@@ -243,7 +253,7 @@ function setAllBallColors(colorObj) {
     setColorInputValue($color4Input, colorObj.ball4);
     setColorInputValue($ballpitColorInput, colorObj.ballpit);
 
-    setSingleColorByValue(colorObj.ball1, $allColor1);    
+    setSingleColorByValue(colorObj.ball1, $allColor1);
     setSingleColorByValue(colorObj.ball2, $allColor2);
     setSingleColorByValue(colorObj.ball3, $allColor3);
     setSingleColorByValue(colorObj.ball4, $allColor4);
